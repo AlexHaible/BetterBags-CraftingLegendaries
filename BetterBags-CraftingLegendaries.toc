@@ -1,0 +1,21 @@
+## Interface: 100207, 110000
+
+## Title: BetterBags - Crafting Legendaries
+## Author: Sauravisus (Xerastrasza - Magtheridon EU, Horde)
+## Notes: Puts all your legendaries and legendary-specific crafting materials in categories.
+## Version: @project-version@
+## X-Date: @project-date-iso@
+## X-Category: Bags & Inventory
+## X-Curse-Project-ID: 1033418
+## Dependencies: BetterBags
+## IconTexture: Interface\Icons\inv_misc_bag_24_netherweave_imbued
+
+#@alpha@
+## OptionalDeps: BugSack, BugGrabber
+#@end-alpha@
+
+main.lua
+
+#@debug@
+## Version: DEV
+#@end-debug@
