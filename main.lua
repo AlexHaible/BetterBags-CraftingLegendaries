@@ -42,10 +42,10 @@ local categories = {
     shadowmourne = "Shadowmourne",
     dragonwrath = "Dragonwrath, Tarecgosa's Rest",
     fangs = "Fangs of the Father",
-    ashjrakamas = "Ashjrakamas, Shroud of Resolve",
-    raeshalare = "Raeshalare, Death's Whisper",
-    naszuro = "Naszuro, Bond of the Tormented",
-    fyralath = "Fyralath, the Dreamrender",
+    ashjrakamas = "Ashjra'kamas, Shroud of Resolve",
+    raeshalare = "Rae'shalare, Death's Whisper",
+    naszuro = "Nasz'uro, Bond of the Tormented",
+    fyralath = "Fyr'alath, the Dreamrender",
     mists = "Mists of Pandaria Legendary Capes",
     wod = "Warlords of Draenor Legendary Rings",
     legion = "Legion Legendaries",
@@ -54,7 +54,31 @@ local categories = {
 }
 
 function getCategoryName(name)
-    return L:G(categories.name)
+    return WrapCategoryText(L:G(categories.name))
+end
+
+function WrapCategoryText(category)
+    return WrapTextInColorCode(L:G(category), "ffff8000")
+end
+
+function KillOldCategories()
+    for _, category in pairs(categories) do
+        categories:WipeCategory(category)
+        categories:WipeCategory(L:G(category))
+        categories:WipeCategory("Ashjrakamas, Shroud of Resolve")
+        categories:WipeCategory("Raeshalare, Death's Whisper")
+        categories:WipeCategory("Naszuro, Bond of the Tormented")
+        categories:WipeCategory("Fyralath, the Dreamrender")
+        categories:WipeCategory(L:G("Ashjrakamas, Shroud of Resolve"))
+        categories:WipeCategory(L:G("Raeshalare, Death's Whisper"))
+        categories:WipeCategory(L:G("Naszuro, Bond of the Tormented"))
+        categories:WipeCategory(L:G("Fyralath, the Dreamrender"))
+    end
+end
+
+-- On plugin load, wipe the categories we've added
+function Appearances:OnInitialize()
+    killOldCategories()
 end
 
 -- Atiesh, Greatstaff of the Guardian
