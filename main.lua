@@ -33,6 +33,7 @@ local legendary = {
 }
 
 local categories = {
+    atiesh = "Atiesh, Greatstaff of the Guardian",
     sulfuras = "Sulfuras, Hand of Ragnaros",
     thunderfury = "Thunderfury, Blessed Blade of the Windseeker",
     warglaives = "Warglaives of Azzinoth",
@@ -46,15 +47,26 @@ local categories = {
     naszuro = "Naszuro, Bond of the Tormented",
     fyralath = "Fyralath, the Dreamrender",
     mists = "Mists of Pandaria Legendary Capes",
+    wod = "Warlords of Draenor Legendary Rings",
     legion = "Legion Legendaries",
-    runecrafted = "Runecrafted Legendaries",
-    memories = "Runecrafting Memories",
+    runecrafted = "Shadowlands Runecrafted Legendaries",
+    memories = "Shadowlands Runecrafting Memories",
 }
 
 function getCategoryName(name)
     return L:G(categories.name)
 end
 
+-- Atiesh, Greatstaff of the Guardian
+table.insert(legendary.atiesh, {itemID = 22589, itemName = "Atiesh, Greatstaff of the Guardian (Mage)"})
+table.insert(legendary.atiesh, {itemID = 22630, itemName = "Atiesh, Greatstaff of the Guardian (Warlock)"})
+table.insert(legendary.atiesh, {itemID = 22631, itemName = "Atiesh, Greatstaff of the Guardian (Priest)"})
+table.insert(legendary.atiesh, {itemID = 22632, itemName = "Atiesh, Greatstaff of the Guardian (Druid)"})
+table.insert(legendary.atiesh, {itemID = 22726, itemName = "Splinter of Atiesh"})
+table.insert(legendary.atiesh, {itemID = 22727, itemName = "Frame of Atiesh"})
+table.insert(legendary.atiesh, {itemID = 22733, itemName = "Staff Head of Atiesh"})
+table.insert(legendary.atiesh, {itemID = 22734, itemName = "Base of Atiesh"})
+table.insert(legendary.atiesh, {itemID = 22737, itemName = "Atiesh, Greatstaff of the Guardian (Quest)"})
 -- Sulfuras, Hand of Ragnaros
 table.insert(legendary.sulfuras, {itemID = 17182, itemName = "Sulfuras, Hand of Ragnaros"})
 table.insert(legendary.sulfuras, {itemID = 17193, itemName = "Sulfuron Hammer"})
@@ -162,6 +174,51 @@ table.insert(legendary.mists, {itemID = 102247, itemName = "Jina-Kang, Kindness 
 table.insert(legendary.mists, {itemID = 102248, itemName = "Fen-Yu, Fury of Xuen"})
 table.insert(legendary.mists, {itemID = 102249, itemName = "Gong-Lu, Strength of Xuen"})
 table.insert(legendary.mists, {itemID = 102250, itemName = "Qian-Ying, Fortitude of Niuzao"})
+-- Warlords of Draenor Legendary Rings
+table.insert(legendary.wod, {itemID = 114780, itemName = "Pure Solium Band"})
+table.insert(legendary.wod, {itemID = 118290, itemName = "Solium Band of Might"})
+table.insert(legendary.wod, {itemID = 118291, itemName = "Solium Band of Wisdom"})
+table.insert(legendary.wod, {itemID = 118292, itemName = "Solium Band of Dexterity"})
+table.insert(legendary.wod, {itemID = 118293, itemName = "Solium Band of Endurance"})
+table.insert(legendary.wod, {itemID = 118294, itemName = "Solium Band of Mending"})
+table.insert(legendary.wod, {itemID = 113682, itemName = "Core of Flame"})
+table.insert(legendary.wod, {itemID = 114107, itemName = "Core of Iron"})
+table.insert(legendary.wod, {itemID = 114138, itemName = "Core of Life"})
+table.insert(legendary.wod, {itemID = 114240, itemName = "Corrupted Blood of Teron'gor"})
+table.insert(legendary.wod, {itemID = 115280, itemName = "Abrogator Stone"})
+table.insert(legendary.wod, {itemID = 115288, itemName = "Felbreaker's Tome"})
+table.insert(legendary.wod, {itemID = 115289, itemName = "Sigil of the Sorcerer King"})
+table.insert(legendary.wod, {itemID = 115479, itemName = "Heart of the Fury"})
+table.insert(legendary.wod, {itemID = 115493, itemName = "Flamebender's Tome"})
+table.insert(legendary.wod, {itemID = 115494, itemName = "Draenic Thaumaturgical Orb"})
+table.insert(legendary.wod, {itemID = 115509, itemName = "Elemental Tablet"})
+table.insert(legendary.wod, {itemID = 115510, itemName = "Elemental Rune"})
+table.insert(legendary.wod, {itemID = 115523, itemName = "Blackhand's Severed Arm"})
+table.insert(legendary.wod, {itemID = 115981, itemName = "Abrogator Stone Cluster"})
+table.insert(legendary.wod, {itemID = 118295, itemName = "Timeless Solium Band of Brutality"})
+table.insert(legendary.wod, {itemID = 118296, itemName = "Timeless Solium Band of the Archmage"})
+table.insert(legendary.wod, {itemID = 118297, itemName = "Timeless Solium Band of the Assassin"})
+table.insert(legendary.wod, {itemID = 118298, itemName = "Timeless Solium Band of the Bulwark"})
+table.insert(legendary.wod, {itemID = 118299, itemName = "Timeless Solium Band of Lifegiving"})
+table.insert(legendary.wod, {itemID = 118300, itemName = "Spellbound Solium Band of Sorcerous Strength"})
+table.insert(legendary.wod, {itemID = 118301, itemName = "Spellbound Solium Band of the Kirin-Tor"})
+table.insert(legendary.wod, {itemID = 118302, itemName = "Spellbound Solium Band of Fatal Strikes"})
+table.insert(legendary.wod, {itemID = 118303, itemName = "Spellbound Solium Band of Sorcerous Invincibility"})
+table.insert(legendary.wod, {itemID = 118304, itemName = "Spellbound Solium Band of the Immortal Spirit"})
+table.insert(legendary.wod, {itemID = 118305, itemName = "Spellbound Runic Band of Elemental Power"})
+table.insert(legendary.wod, {itemID = 118306, itemName = "Spellbound Runic Band of the All-Seeing Eye"})
+table.insert(legendary.wod, {itemID = 118307, itemName = "Spellbound Runic Band of Unrelenting Slaughter"})
+table.insert(legendary.wod, {itemID = 118308, itemName = "Spellbound Runic Band of Elemental Invincibility"})
+table.insert(legendary.wod, {itemID = 118309, itemName = "Spellbound Runic Band of Infinite Preservation"})
+table.insert(legendary.wod, {itemID = 122155, itemName = "Orb of Dominion"})
+table.insert(legendary.wod, {itemID = 124634, itemName = "Thorasus, the Stone Heart of Draenor"})
+table.insert(legendary.wod, {itemID = 124635, itemName = "Nithramus, the All-Seer"})
+table.insert(legendary.wod, {itemID = 124636, itemName = "Maalus, the Blood Drinker"})
+table.insert(legendary.wod, {itemID = 124637, itemName = "Sanctus, Sigil of the Unbroken"})
+table.insert(legendary.wod, {itemID = 124638, itemName = "Etheralus, the Eternal Reward"})
+table.insert(legendary.wod, {itemID = 127115, itemName = "Tome of Chaos"})
+table.insert(legendary.wod, {itemID = 127785, itemName = "Crystallized Fel"})
+table.insert(legendary.wod, {itemID = 128693, itemName = "Draenic Sea Chart"})
 -- Legion Legendary Items
 table.insert(legendary.legion, {itemID = 132452, itemName = "Sephuz's Secret"})
 table.insert(legendary.legion, {itemID = 132444, itemName = "Prydaz, Xavaric's Magnum Opus"})
