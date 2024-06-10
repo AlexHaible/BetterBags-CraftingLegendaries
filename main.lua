@@ -17,6 +17,7 @@ local _, addon = ...
 
 -- Make a table of tables to store legendary items in.
 local legendary = {
+    atiesh = {},
     sulfuras = {},
     thunderfury = {},
     warglaives = {},
@@ -30,6 +31,7 @@ local legendary = {
     naszuro = {},
     fyralath = {},
     mists = {},
+    wod = {},
     legion = {},
     runecrafted = {},
     memories = {},
