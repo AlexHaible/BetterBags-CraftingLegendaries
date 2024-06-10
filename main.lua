@@ -9,6 +9,9 @@ local categories = BetterBags:GetModule('Categories')
 ---@class Localization: AceModule
 local L = BetterBags:GetModule('Localization')
 
+---@class CraftingLegendaries: AceModule
+local CraftingLegendaries = BetterBags:NewModule('CraftingLegendaries')
+
 ---@type string, AddonNS
 local _, addon = ...
 
@@ -77,7 +80,7 @@ function KillOldCategories()
 end
 
 -- On plugin load, wipe the categories we've added
-function Appearances:OnInitialize()
+function CraftingLegendaries:OnInitialize()
     killOldCategories()
 end
 
