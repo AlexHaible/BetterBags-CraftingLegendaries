@@ -57,10 +57,10 @@ local categories = {
 }
 
 function getCategoryName(name)
-    return WrapCategoryText(L:G(categories.name))
+    return WrapLegendaryCategoryText(L:G(categories.name))
 end
 
-function WrapCategoryText(category)
+function WrapLegendaryCategoryText(category)
     return WrapTextInColorCode(L:G(category), "ffff8000")
 end
 
