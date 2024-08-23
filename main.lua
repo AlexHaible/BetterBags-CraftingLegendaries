@@ -83,7 +83,7 @@ end
 
 -- On plugin load, wipe the categories we've added
 function CraftingLegendaries:OnInitialize()
-    killOldCategories()
+    KillOldCategories()
 end
 
 -- Atiesh, Greatstaff of the Guardian
