@@ -37,7 +37,7 @@ local legendary = {
     memories = {},
 }
 
-local categories = {
+local legendaryCategories = {
     atiesh = "Atiesh, Greatstaff of the Guardian",
     sulfuras = "Sulfuras, Hand of Ragnaros",
     thunderfury = "Thunderfury, Blessed Blade of the Windseeker",
@@ -67,7 +67,7 @@ function WrapLegendaryCategoryText(category)
 end
 
 function KillOldCategories()
-    for _, category in pairs(categories) do
+    for _, category in pairs(legendaryCategories) do
         categories:WipeCategory(category)
         categories:WipeCategory(L:G(category))
         categories:WipeCategory("Ashjrakamas, Shroud of Resolve")
