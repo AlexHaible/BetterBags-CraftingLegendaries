@@ -56,7 +56,8 @@ local legendaryCategories = {
 }
 
 function CraftingLegendaries:GetCategoryName(name)
-    return self:WrapLegendaryCategoryText(L:G(name))
+    local theName = legendaryCategories[name]
+    return self:WrapLegendaryCategoryText(L:G(theName))
 end
 
 function CraftingLegendaries:WrapLegendaryCategoryText(category)
