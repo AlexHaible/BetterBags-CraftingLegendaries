@@ -832,9 +832,3 @@ function CraftingLegendaries:OnInitialize()
     self:AddItemsToTables()
     self:AddTablesToCategories()
 end
-
-function CraftingLegendaries:OnPluginEnable()
-    --@debug@
-    print("CraftingLegendaries enabled.")
-    --@end-debug@
-end
