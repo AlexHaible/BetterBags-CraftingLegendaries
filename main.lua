@@ -14,24 +14,752 @@ local CraftingLegendaries = BetterBags:NewModule('CraftingLegendaries')
 
 -- Make a table of tables to store legendary items in.
 local legendary = {
-    atiesh = {},
-    sulfuras = {},
-    thunderfury = {},
-    warglaives = {},
-    thoridal = {},
-    valanyr = {},
-    shadowmourne = {},
-    dragonwrath = {},
-    fangs = {},
-    ashjrakamas = {},
-    raeshalare = {},
-    naszuro = {},
-    fyralath = {},
-    mists = {},
-    wod = {},
-    legion = {},
-    runecrafted = {},
-    memories = {},
+    atiesh = {
+        22589, -- Atiesh, Greatstaff of the Guardian (Mage)
+        22630, -- Atiesh, Greatstaff of the Guardian (Warlock)
+        22631, -- Atiesh, Greatstaff of the Guardian (Priest)
+        22632, -- Atiesh, Greatstaff of the Guardian (Druid)
+        22726, -- Splinter of Atiesh
+        22727, -- Frame of Atiesh
+        22733, -- Staff Head of Atiesh
+        22734, -- Base of Atiesh
+        22737, -- Atiesh, Greatstaff of the Guardian (Quest)
+    },
+    sulfuras = {
+        17182, -- Sulfuras, Hand of Ragnaros
+        17193, -- Sulfuron Hammer
+        17203, -- Sulfuron Ingot
+        17204, -- Eye of Sulfuras
+    },
+    thunderfury = {
+        17771, -- Enchanted Elementium Bar
+        18562, -- Elementium Ingot
+        18563, -- Bindings of the Windseeker (Left)
+        18564, -- Bindings of the Windseeker (Right)
+        19017, -- Essence of the Firelord
+        19019, -- Thunderfury, Blessed Blade of the Windseeker
+    },
+    warglaives = {
+        32837, -- Warglaive of Azzinoth
+        32838, -- Warglaive of Azzinoth
+    },
+    thoridal = {
+        34334, -- Thori'dal, the Stars' Fury
+    },
+    valanyr = {
+        45038, -- Fragment of Val'anyr
+        45039, -- Shattered Fragments of Val'anyr
+        45896, -- Unbound Fragments of Val'anyr
+        46017, -- Val'anyr, Hammer of Ancient Kings
+    },
+    shadowmourne = {
+        49623, -- Shadowmourne
+        49888, -- Shadow's Edge
+        49869, -- Light's Vengeance
+        50226, -- Festergut's Acidic Blood
+        50231, -- Rotface's Acidic Blood
+        50274, -- Shadowfrost Shard
+    },
+    dragonwrath = {
+        69646, -- Branch of Nordrassil (Quest)
+        69815, -- Seething Cinder
+        69848, -- Heart of Flame
+        70994, -- Pyreshell Fragment
+        70995, -- Dull Pyreshell Focus
+        70996, -- Dull Rhyolite Focus
+        70997, -- Rhyolite Fragment
+        70998, -- Dull Chitinous Focus
+        70999, -- Obsidian-Flecked Chitin Fragment
+        71000, -- Emberstone Fragment
+        71001, -- Dull Emberstone Focus
+        71008, -- Charged Rhyolite Focus
+        71015, -- Charged Emberstone Focus
+        71016, -- Charged Pyreshell Focus
+        71017, -- Charged Chitinous Focus
+        71084, -- Branch of Nordrassil (Staff 1)
+        71085, -- Branch of Nordrassil (Staff 2)
+        71086, -- Dragonwrath, Tarecgosa's Rest
+        71141, -- Eternal Ember
+    },
+    fangs = {
+        74246, -- Cryptomancer's Decoder Ring
+        74748, -- Charged Decoder Ring
+        74750, -- Singed Cipher
+        77945, -- Fear
+        77946, -- Vengeance
+        77947, -- The Sleeper
+        77948, -- The Dreamer
+        77949, -- Golad, Twilight of Aspects
+        77950, -- Tiriosh, Nightmare of Ages
+        77951, -- Shadowy Gem
+        77952, -- Elementium Gem Cluster
+    },
+    ashjrakamas = {
+        169223, -- Ashjra'kamas, Shroud of Resolve
+        171335, -- Corrupting Core
+        174777, -- The Curse of Stone
+        171353, -- Torn Page of 'The Curse of Stone'
+        171354, -- Horrific Core
+        174782, -- Fear and Flesh
+        174783, -- Torn Page of 'Fear and Flesh'
+        174784, -- The Final Truth
+        174785, -- Torn Page of 'The Final Truth'
+        171355, -- Voidborn Core
+        175062, -- Malefic Core
+    },
+    raeshalare = {
+        186414, -- Rae'shalare, Death's Whisper
+    },
+    naszuro = {
+        204177, -- Nasz'uro, Bond of the Tormented
+        204255, -- Cracked Titan Gem
+        205257, -- Temporal Vestigial
+        204832, -- Reclaimed Gauntlet Chassis
+        204854, -- Immaculate Coalescing Dracothyst
+        204856, -- Inspired Order Recalibrator
+        204857, -- Ancient Elementium Fragment
+        205260, -- Fleeting Glowspores
+        205258, -- Everburning Shadowflame
+    },
+    fyralath = {
+        206448, -- Fyr'alath, the Dreamrender (Complete)
+        207728, -- Fyr'alath, the Dreamrender (Incomplete)
+        208577, -- Symbiotic Glowspore Grip
+        208593, -- Shadowed Dreamleaf
+        209351, -- Erden's Dreamleaf Grip
+        210009, -- Prototype Dreamleaf Grip
+        208578, -- Concentrated Sophic Vellum
+        208581, -- Radiant Fleck of Ash
+        210001, -- Prototype Order Vellum
+        210003, -- Shalasar's Sophic Vellum
+        208592, -- Rune of Shadowbinding
+        208595, -- Taut Tethercoil
+        209352, -- Prototype Binding Rune
+        209998, -- Lydiara's Binding Rune
+    },
+    mists = {
+        102245, -- Qian-Le, Courage of Niuzao
+        102246, -- Xing-Ho, Breath of Yu'lon
+        102247, -- Jina-Kang, Kindness of Chi-Ji
+        102248, -- Fen-Yu, Fury of Xuen
+        102249, -- Gong-Lu, Strength of Xuen
+        102250, -- Qian-Ying, Fortitude of Niuzao
+    },
+    wod = {
+        114780, -- Pure Solium Band
+        118290, -- Solium Band of Might
+        118291, -- Solium Band of Wisdom
+        118292, -- Solium Band of Dexterity
+        118293, -- Solium Band of Endurance
+        118294, -- Solium Band of Mending
+        113682, -- Core of Flame
+        114107, -- Core of Iron
+        114138, -- Core of Life
+        114240, -- Corrupted Blood of Teron'gor
+        115280, -- Abrogator Stone
+        115288, -- Felbreaker's Tome
+        115289, -- Sigil of the Sorcerer King
+        115479, -- Heart of the Fury
+        115493, -- Flamebender's Tome
+        115494, -- Draenic Thaumaturgical Orb
+        115509, -- Elemental Tablet
+        115510, -- Elemental Rune
+        115523, -- Blackhand's Severed Arm
+        115981, -- Abrogator Stone Cluster
+        118295, -- Timeless Solium Band of Brutality
+        118296, -- Timeless Solium Band of the Archmage
+        118297, -- Timeless Solium Band of the Assassin
+        118298, -- Timeless Solium Band of the Bulwark
+        118299, -- Timeless Solium Band of Lifegiving
+        118300, -- Spellbound Solium Band of Sorcerous Strength
+        118301, -- Spellbound Solium Band of the Kirin-Tor
+        118302, -- Spellbound Solium Band of Fatal Strikes
+        118303, -- Spellbound Solium Band of Sorcerous Invincibility
+        118304, -- Spellbound Solium Band of the Immortal Spirit
+        118305, -- Spellbound Runic Band of Elemental Power
+        118306, -- Spellbound Runic Band of the All-Seeing Eye
+        118307, -- Spellbound Runic Band of Unrelenting Slaughter
+        118308, -- Spellbound Runic Band of Elemental Invincibility
+        118309, -- Spellbound Runic Band of Infinite Preservation
+        122155, -- Orb of Dominion
+        124634, -- Thorasus, the Stone Heart of Draenor
+        124635, -- Nithramus, the All-Seer
+        124636, -- Maalus, the Blood Drinker
+        124637, -- Sanctus, Sigil of the Unbroken
+        124638, -- Etheralus, the Eternal Reward
+        127115, -- Tome of Chaos
+        127785, -- Crystallized Fel
+        128693, -- Draenic Sea Chart
+    },
+    legion = {
+        132452, -- Sephuz's Secret
+        132444, -- Prydaz, Xavaric's Magnum Opus
+        151801, -- Behemoth Headdress
+        151644, -- Soul of the Highlord
+        132443, -- Aggramar's Stride
+        144258, -- Velen's Future Sight
+        144361, -- Butcher's Bone Apron
+        144385, -- Wakener's Loyalty
+        144303, -- MKII Gyroscopic Stabilizer
+        151821, -- The Master Harvester
+        132374, -- Kazzak's Final Curse
+        137038, -- Anger of the Half-Giants
+        132375, -- Odr, Shawl of the Ymirjar
+        137033, -- Ullr's Feather Snowshoes
+        151802, -- Fury of Nature
+        151800, -- Radiant Moonlight
+        137382, -- The Apex Predator's Claw
+        132410, -- Shard of the Exodar
+        133977, -- Belo'vir's Final Stand
+        132379, -- Sin'dorei Spite
+        137042, -- Tearstone of Elune
+        137072, -- Aman'Thul's Wisdom
+        141321, -- Shivarran Symmetry
+        137047, -- Heathcliff's Immortality
+        132407, -- Magistrike Restraints
+        133974, -- Lana'thel's Lament
+        137094, -- The Wildshaper's Clutch
+        154172, -- Aman'Thul's Vision
+        146669, -- The Sentinel's Eternal Refuge
+        137061, -- Raddon's Cascading Eyes
+        146666, -- Celumbra, the Night's Dichotomy
+        146667, -- Rethu's Incessant Courage
+        151824, -- Valarjar Berserkers
+        137064, -- The Shadow Hunter's Voodoo Mask
+        143728, -- Timeless Stratagem
+        143732, -- Uncertain Reminder
+        137088, -- Ceann-Ar Charger
+        137109, -- X'anshi, Shroud of Archbishop Benedictus
+        144369, -- Lessons of Space-Time
+        132409, -- Anund's Seared Shackles
+        137015, -- Ekowraith, Creator of Worlds
+        151636, -- Soul of the Archdruid
+        137076, -- Obsidian Stone Spaulders
+        144259, -- Kil'jaeden's Burning Wish
+        144279, -- Delusions of Grandeur
+        144358, -- Ashes to Dust
+        151814, -- Heart of the Void
+        137020, -- Whisper of the Nathrezim
+        151812, -- Pillars of Inmost Light
+        137084, -- Akainu's Absolute Justice
+        137098, -- Zoldyck Family Training Shackles
+        140846, -- Aegisjalmur, the Armguards of Awe
+        151650, -- Soul of the Battlelord
+        137108, -- Kakushan's Stormscale Gauntlets
+        146668, -- Vigilance Perch
+        151811, -- The Wind Blows
+        132863, -- Darckli's Dragonfire Diadem
+        151823, -- The Great Storm's Eye
+        137062, -- The Emerald Dreamcatcher
+        152626, -- Insignia of the Grand Army
+        132436, -- Skjoldr, Sanctuary of Ivagont
+        144281, -- Skullflower's Haemostasis
+        132376, -- Acherus Drapes
+        137017, -- Breastplate of the Golden Val'kyr
+        137039, -- Impeccable Fel Essence
+        141353, -- Magnetized Blasting Cap Launcher
+        133800, -- Cord of Maiev, Priestess of the Moon
+        133973, -- The Twins' Painful Touch
+        137059, -- Tyr's Hand of Faith
+        137107, -- Mannoroth's Bloodletting Manacles
+        144280, -- Death March
+        151641, -- Soul of the Huntmaster
+        132406, -- Marquee Bindings of the Sun King
+        132454, -- Koralon's Burning Touch
+        132455, -- Norgannon's Foresight
+        137065, -- Justice Gaze
+        137066, -- Cloak of Fel Flames
+        137069, -- Will of Valeera
+        137105, -- Uther's Guard
+        144326, -- The Mantle of Command
+        132411, -- Lady Vashj's Grasp
+        137052, -- Ayala's Stone Heart
+        137056, -- Luffa Wrappings
+        137083, -- Pristine Proto-Scale Girdle
+        144244, -- Kam Xi'raff
+        144249, -- Archimonde's Hatred Reborn
+        151784, -- Doorway to Nowhere
+        151817, -- The Curse of Restlessness
+        132449, -- Phyrix's Embrace
+        132466, -- Roots of Shaladrassil
+        133976, -- Cinidaria, the Symbiote
+        137092, -- Oneth's Intuition
+        137100, -- Denial of the Half-Giants
+        132413, -- Rhonin's Assaulting Armwraps
+        137014, -- Achor, the Eternal Hunger
+        137074, -- Echoes of the Great Sundering
+        151639, -- Soul of the Slayer
+        151798, -- Chaos Theory
+        132453, -- Rattlegore Bone Legplates
+        137026, -- Essence of Infusion
+        137045, -- Eye of Collidus the Warp-Watcher
+        144355, -- Pyrotex Ignition Cloth
+        144438, -- Zeks Exterminatus
+        132437, -- Mother Shahraz's Seduction
+        151783, -- Chameleon Song
+        151795, -- Soulflayer's Corruption
+        132394, -- Hood of Eternal Disdain
+        132459, -- Perseverance of the Ebon Martyr
+        133971, -- Zenk'aram, Iridi's Anadem
+        137031, -- Thraxi's Tricksy Treads
+        137037, -- Uvanimor, the Unbeautiful
+        137051, -- Focuser of Jonat, the Elder
+        137060, -- Archavon's Heavy Hand
+        137089, -- Thundergod's Vigor
+        138140, -- Magtheridon's Banished Bracers
+        151782, -- The Topless Tower
+        132445, -- Al'maiesh, the Cord of Hope
+        132861, -- Estel, Dejahna's Inspiration
+        137050, -- Eye of the Twisting Nether
+        137090, -- Mo'arg Bionic Stabilizers
+        137101, -- Call of the Wild
+        151649, -- Soul of the Netherlord
+        151796, -- Cold Heart
+        151809, -- Contained Infernal Core
+        151813, -- Scarlet Inquisitor's Expurgation
+        132357, -- Pillars of the Dark Portal
+        132448, -- The Instructor's Fourth Lesson
+        137024, -- Ailuro Pouncers
+        137036, -- Elemental Rebalancers
+        137048, -- Liadrin's Fury Unleashed
+        137095, -- Edraith, Bonds of Aglaya
+        137097, -- Drinking Horn Cover
+        151803, -- Celerity of the Windrunners
+        144274, -- Gravity Spiral
+        144295, -- Lady and the Child
+        151788, -- Stormstout's Last Gasp
+        132378, -- Sacrolash's Dark Strike
+        132441, -- Draugr, Girdle of the Everlasting King
+        132456, -- Feretory of Souls
+        137019, -- Cenedril, Reflector of Hatred
+        137041, -- Dual Determination
+        137057, -- Hidden Master's Forbidden Touch
+        137053, -- Tak'theritrix's Shoulderpads
+        137082, -- Weight of the Earth
+        137086, -- War Belt of the Sentinel Army
+        137104, -- The Defiler's Lost Vambraces
+        144236, -- March of the Legion
+        151646, -- Kirel Narak
+        151808, -- The Empty Crown
+        151822, -- The First of the Dead
+        132366, -- Recurrent Ritual
+        132381, -- Promise of Elune, the Moon Goddess
+        132458, -- Ei'thas, Lunar Glides of Eramas
+        137018, -- Unison Spaulders
+        137068, -- Emalon's Charged Core
+        137087, -- Ice Time
+        137223, -- Soul of the Archmage
+        138879, -- The Alabaster Lady
+        144275, -- Parsel's Tongue
+        144292, -- Power Cord of Lethtendris
+        151786, -- The Dreadlord's Deceit
+        151799, -- Firestone Walkers
+        132450, -- Kazzalax, Fujieda's Fury
+        137025, -- Helbrine, Rope of the Mist Marauder
+        137032, -- Chain of Thrayn
+        137044, -- Nobundo's Redemption
+        137054, -- Mantle of the Master Assassin
+        137078, -- Soul of the High Priest
+        137102, -- Mantle of the First Kirin Tor
+        144239, -- Ararat's Bloodmirror
+        144242, -- Koltira's Newfound Will
+        144364, -- Streten's Sleepless Shackles
+        144432, -- Toravon's Whiteout Bindings
+        151819, -- Destiny Driver
+        132460, -- Leggings of The Black Flame
+        137055, -- Naj'entus's Vertebrae
+        137058, -- Seal of Necrofantasia
+        137067, -- Ovyd's Winter Wrap
+        137080, -- Saruan's Resolve
+        151640, -- Spirit of the Darkness Flame
+        151785, -- Inner Hallation
+        132447, -- Oblivion's Embrace
+        132451, -- Muze's Unwavering Will
+        132461, -- Skysec's Hold
+        137022, -- Shadow Satyr's Walk
+        137029, -- Jewel of the Lost Abbey
+        137030, -- The Walls Fell
+        137035, -- The Dark Titan's Advice
+        137046, -- Al'Akir's Acrimony
+        137085, -- The Emperor's Capacitor
+        137099, -- X'oni's Caress
+        137276, -- Reap and Sow
+        144293, -- Oakheart's Puny Quods
+        132365, -- Smoldering Heart
+        132864, -- Alythess's Pyrogenics
+        137049, -- Zevrim's Hunger
+        144247, -- Praetorian's Tidecallers
+        144277, -- Elize's Everlasting Encasement
+        144340, -- Roar of the Seven Lions
+        144354, -- Soul of the Deathlord
+        151810, -- Fire in the Deep
+        133970, -- Entrancing Trousers of An'juna
+        137040, -- Mystic Kilt of the Rune Master
+        137070, -- Xalan the Feared's Clench
+        137079, -- Loramus Thalipedes' Sacrifice
+        151647, -- Katsuo's Eclipse
+        132367, -- Duskwalker's Footpads
+        132442, -- The Deceiver's Blood Pact
+        137063, -- Ilterendi, Crown Jewel of Silvermoon
+        137096, -- Intact Nazjatar Molting
+        132369, -- Greenskin's Waterlogged Wristcuffs
+        137016, -- N'ero, Band of Promises
+        137227, -- Consort's Cold Core
+        137227, -- Consort's Cold Core
+        138117, -- Shackles of Bryndaor
+        150936, -- Mangaza's Madness
+        151643, -- Insignia of Ravenholdt
+        151807, -- Rammal's Ulterior Motive
+        137034, -- Anvil-Hardened Wristwraps
+        137043, -- Shelter of Rin
+        137071, -- Fiery Red Maimers
+        137103, -- Shattered Fragments of Sindragosa
+        144273, -- Zann'esu Journey
+        138854, -- Chatoyant Signet
+        132452, -- Tyelca, Ferren Marcus's Stature
+        132444, -- Gai Plin's Soothing Sash
+        151801, -- Soul of the Farseer
+        151644, -- Service of Gorefiend
+        132443, -- Cord of Infinity
+        144258, -- Fundamental Observation
+        144361, -- Petrichor Lagniappe
+        144385, -- Wilfred's Sigil of Superior Summoning
+        144303, -- Sal'salabim's Lost Tunic
+        151821, -- Qa'pla, Eredun War Order
+        132374, -- Spiritual Journey
+        137038, -- Soul of the Shadowblade
+        132375, -- Soul of the Grandmaster
+        137033, -- Unseen Predator's Cloak
+        151802, -- Nesingwary's Trapping Treads
+        151800, -- Frizzo's Fingertrap
+        137382, -- Runemaster's Pauldrons
+        132410, -- Storm Tempests
+        133977, -- Maraad's Dying Breath
+        132379, -- Fragment of the Betrayer's Prison
+    },
+    runecrafted = {
+        190464, -- Cinch of Unity (Mage)
+        190465, -- Cinch of Unity (Druid)
+        190466, -- Cinch of Unity (Hunter)
+        190467, -- Cinch of Unity (Death Knight)
+        190468, -- Cinch of Unity (Priest)
+        190469, -- Cinch of Unity (Warlock)
+        190470, -- Cinch of Unity (Demon Hunter)
+        190471, -- Cinch of Unity (Rogue)
+        190472, -- Cinch of Unity (Monk)
+        190473, -- Cinch of Unity (Shaman)
+        190474, -- Cinch of Unity (Paladin)
+        190475, -- Cinch of Unity (Warrior)
+        178927, -- Shadowghast Necklace
+        178926, -- Shadowghast Ring
+        171417, -- Shadowghast Pauldrons
+        171418, -- Shadowghast Waistguard
+        171412, -- Shadowghast Breastplate
+        171415, -- Shadowghast Helm
+        171413, -- Shadowghast Sabatons
+        171419, -- Shadowghast Armguards
+        171416, -- Shadowghast Greaves
+        171414, -- Shadowghast Gauntlets
+        173241, -- Grim-Veiled Robe
+        173245, -- Grim-Veiled Hood
+        173242, -- Grim-Veiled Cape
+        173248, -- Grim-Veiled Belt
+        173247, -- Grim-Veiled Spaulders
+        173243, -- Grim-Veiled Sandals
+        173244, -- Grim-Veiled Mittens
+        173249, -- Grim-Veiled Bracers
+        173246, -- Grim-Veiled Pants
+        172317, -- Umbrahide Helm
+        172321, -- Umbrahide Armguards
+        172319, -- Umbrahide Pauldrons
+        172314, -- Umbrahide Vest
+        172315, -- Umbrahide Treads
+        172316, -- Umbrahide Gauntlets
+        172318, -- Umbrahide Leggings
+        172320, -- Umbrahide Waistguard
+        172322, -- Boneshatter Vest
+        172327, -- Boneshatter Pauldrons
+        172326, -- Boneshatter Greaves
+        172325, -- Boneshatter Helm
+        172323, -- Boneshatter Treads
+        172329, -- Boneshatter Armguards
+        172328, -- Boneshatter Waistguard
+        172324, -- Boneshatter Gauntlets
+    },
+    memories = {
+        183243, -- Memory of the Arbiter's Judgment
+        183284, -- Memory of Escaping from Reality
+        183325, -- Memory of Archbishop Benedictus
+        183244, -- Memory of the Rattle of the Maw
+        183349, -- Memory of the Deeptremor Stone
+        190590, -- Memory of Unity
+        183353, -- Memory of the Windspeaker's Lava Resurgence
+        183264, -- Memory of the Rylakstalker's Strikes
+        183305, -- Memory of the Shock Barrier
+        183223, -- Memory of the Circle of Life and Death
+        183375, -- Memory of the Diabolic Raiment
+        183226, -- Memory of the Balance of All Things
+        190584, -- Memory of Unity
+        183263, -- Memory of Poisonous Injectors
+        183342, -- Memory of Akaari's Soul Fragment
+        182636, -- Memory of the Deadliest Coil
+        183253, -- Memory of the Soulforge Embers
+        183293, -- Memory of the Morning's Tear
+        183330, -- Memory of Bloodfang's Essence
+        183393, -- Memory of an Unbreakable Will
+        187231, -- Memory of the Fragments of the Elder Antlers
+        183239, -- Memory of an Unending Growth
+        183380, -- Memory of a Seismic Reverberation
+        186687, -- Memory of Celestial Spirits
+        183221, -- Memory of the Dark Flame Spirit
+        183249, -- Memory of a Vital Sacrifice
+        183296, -- Memory of the Last Emperor
+        183339, -- Memory of a Concealed Blunderbuss
+        183356, -- Memory of the Primal Lava Actuators
+        183364, -- Memory of Sacrolash's Dark Strike
+        186712, -- Memory of the Deathspike
+        187223, -- Memory of the Seeds of Rampant Growth
+        182638, -- Memory of a Frenzied Monstrosity
+        183262, -- Memory of the Butcher's Bone Fragments
+        183390, -- Memory of a Reprisal
+        183242, -- Memory of Eonar
+        183302, -- Memory of the Sunwell's Bloom
+        183316, -- Memory of the Twins of the Sun Priestess
+        183331, -- Memory of Invigorating Shadowdust
+        186568, -- Memory of an Abomination's Frenzy
+        182634, -- Memory of a Frozen Champion's Rage
+        183285, -- Memory of the Swiftsure Wraps
+        183306, -- Memory of the Righteous Bulwark
+        183346, -- Memory of an Ancestral Reminder
+        183357, -- Memory of the Witch Doctor
+        183360, -- Memory of the Primal Tide Core
+        182630, -- Memory of Gorefiend's Domination
+        183236, -- Memory of Ursoc
+        183240, -- Memory of the Mother Tree
+        183248, -- Memory of Jailer's Eye
+        183328, -- Memory of Talbadar
+        186570, -- Memory of Glory
+        190596, -- Memory of Unity
+        183215, -- Memory of an Erratic Fel Core
+        183218, -- Memory of a Fortified Fel Flame
+        183241, -- Memory of the Dark Titan
+        183280, -- Memory of Fragments of Ice
+        183310, -- Memory of the Vanguard's Momentum
+        183369, -- Memory of Wilfred's Sigil of Superior Summoning
+        186591, -- Memory of the Harmonic Echo
+        187127, -- Memory of Radiant Embers
+        183267, -- Memory of an Expanded Potential
+        183299, -- Memory of the Sun's Cycles
+        183320, -- Memory of the Kiss of Death
+        183340, -- Memory of Greenskin
+        183362, -- Memory of a Malefic Wrath
+        182617, -- Memory of Death's Embrace
+        182632, -- Memory of Absolute Zero
+        183237, -- Memory of the Sleeper
+        183291, -- Memory of Yu'lon
+        183313, -- Memory of the Lightbringer's Tempest
+        183359, -- Memory of Jonat
+        183383, -- Memory of an Enduring Blow
+        183389, -- Memory of the Berserker's Will
+        186565, -- Memory of Rampant Transference
+        190587, -- Memory of Unity
+        190589, -- Memory of Unity
+        182627, -- Memory of Superstrain
+        183229, -- Memory of a Timeworn Dreambinder
+        183270, -- Memory of an Arcane Bombardment
+        183281, -- Memory of Slick Ice
+        183283, -- Memory of the Invoker
+        183289, -- Memory of Stormstout
+        183312, -- Memory of a Relentless Inquisitor
+        183318, -- Memory of a Clear Mind
+        183334, -- Memory of the Dashing Scoundrel
+        183344, -- Memory of Finality
+        183347, -- Memory of Devastating Chains
+        183348, -- Memory of Deeply Rooted Elements
+        183352, -- Memory of the Demise of Skybreaker
+        183358, -- Memory of an Earthen Harmony
+        183372, -- Memory of the Grim Inquisitor
+        183376, -- Memory of Azj'Aqir's Madness
+        183382, -- Memory of a Battlelord
+        187280, -- Memory of the Fae Heart
+        190588, -- Memory of Unity
+        182629, -- Memory of the Crimson Runes
+        183216, -- Memory of a Burning Wound
+        183220, -- Memory of Razelikh's Defilement
+        183238, -- Memory of the Verdant Infusion
+        183245, -- Memory of Norgannon
+        183258, -- Memory of Eagletalon's True Focus
+        183259, -- Memory of the Unblinking Vigil
+        183261, -- Memory of Surging Shots
+        183275, -- Memory of the Firestorm
+        183277, -- Memory of the Sun King
+        183278, -- Memory of the Cold Front
+        183287, -- Memory of Charred Passions
+        183300, -- Memory of the Magistrate's Judgment
+        183315, -- Memory of Measured Contemplation
+        183370, -- Memory of the Core of the Balespider
+        183384, -- Memory of the Exploiter
+        186566, -- Memory of the Final Sentence
+        186609, -- Memory of Sinful Indulgence
+        186621, -- Memory of Death's Fathom
+        187217, -- Memory of the Bountiful Brew
+        187226, -- Memory of the Shards of Annihilation
+        190595, -- Memory of Unity
+        183222, -- Memory of the Elder Druid
+        183246, -- Memory of Sephuz
+        183309, -- Memory of the Ardent Protector
+        183324, -- Memory of a Harmonious Apparatus
+        183367, -- Memory of Demonic Synergy
+        183378, -- Memory of the Leaper
+        187118, -- Memory of the Demonic Oath
+        187163, -- Memory of the Spheres' Harmony
+        187228, -- Memory of the Contained Perpetual Explosion
+        187229, -- Memory of the Pact of the Soulstalkers
+        187258, -- Memory of the Faeline Harmony
+        187259, -- Memory of the Raging Vesper Vortex
+        182640, -- Memory of a Reanimated Shambler
+        183214, -- Memory of the Chaos Theory
+        183225, -- Memory of Lycara
+        183227, -- Memory of Oneth
+        183232, -- Memory of a Symmetrical Eye
+        183235, -- Memory of the Natural Order
+        183256, -- Memory of the Eredun War Order
+        183273, -- Memory of a Temporal Warp
+        183286, -- Memory of Shaohao
+        183288, -- Memory of a Celestial Infusion
+        183298, -- Memory of the Mad Paragon
+        183304, -- Memory of the Shadowbreaker
+        183308, -- Memory of the Endless Kings
+        183311, -- Memory of the Final Verdict
+        183322, -- Memory of a Divine Image
+        183329, -- Memory of a Prism of Shadow and Fire
+        183333, -- Memory of Tiny Toxic Blade
+        183343, -- Memory of the Deathly Shadows
+        183373, -- Memory of an Implosive Potential
+        183374, -- Memory of Azj'Aqir's Cinders
+        183388, -- Memory of a Reckless Defense
+        183391, -- Memory of the Wall
+        186567, -- Memory of Insatiable Hunger
+        186676, -- Memory of the Toxic Onslaught
+        186710, -- Memory of the Obedient
+        187105, -- Memory of the Agonizing Gaze
+        187107, -- Memory of the Duty-Bound Gavel
+        187161, -- Memory of Bwonsamdi's Pact
+        187232, -- Memory of the Pouch of Razor Fragments
+        187277, -- Memory of Sinister Teachings
+        190593, -- Memory of Unity
+        190598, -- Memory of Unity
+        182625, -- Memory of an Everlasting Grip
+        183211, -- Memory of the Hour of Darkness
+        183212, -- Memory of a Darkglare Medallion
+        183219, -- Memory of Soul of Fire
+        183224, -- Memory of a Deep Focus Draught
+        183252, -- Memory of a Trapping Apparatus
+        183254, -- Memory of a Dire Command
+        183279, -- Memory of the Freezing Winds
+        183282, -- Memory of the Fatal Touch
+        183292, -- Memory of Clouded Focus
+        183294, -- Memory of the Jade Ignition
+        183321, -- Memory of the Penitent One
+        183332, -- Memory of the Master Assassin's Mark
+        183335, -- Memory of the Doomblade
+        183341, -- Memory of a Guile Charm
+        183351, -- Memory of an Elemental Equilibrium
+        183355, -- Memory of the Frost Witch
+        183361, -- Memory of the Spiritwalker's Tidal Totem
+        183365, -- Memory of the Consuming Wrath
+        183368, -- Memory of the Dark Portal
+        187511, -- Memory of Elysian Might
+        182628, -- Memory of Bryndaor
+        182635, -- Memory of Koltira
+        183217, -- Memory of my Darker Nature
+        183233, -- Memory of the Frenzyband
+        183234, -- Memory of a Luffa-Infused Embrace
+        183251, -- Memory of a Craven Strategem
+        183255, -- Memory of the Flamewaker
+        183265, -- Memory of a Wildfire Cluster
+        183268, -- Memory of a Grisly Icicle
+        183272, -- Memory of a Siphoning Storm
+        183274, -- Memory of a Fevered Incantation
+        183276, -- Memory of the Molten Sky
+        183295, -- Memory of Keefer
+        183301, -- Memory of Uther
+        183319, -- Memory of my Crystalline Reflection
+        183326, -- Memory of the Void's Eternal Call
+        183377, -- Memory of the Ymirjar
+        186572, -- Memory of the Sinful Surge
+        186689, -- Memory of the Splintered Elements
+        187111, -- Memory of Blind Faith
+        187132, -- Memory of the Seasons of Plenty
+        187162, -- Memory of Shadow Word: Manipulation
+        187224, -- Memory of the Elemental Conduit
+        187225, -- Memory of the Languishing Soul Detritus
+        190591, -- Memory of Unity
+        190592, -- Memory of Unity
+        191635, -- Memory of Unity
+        191641, -- Memory of Unity
+        182626, -- Memory of the Phearomones
+        182633, -- Memory of the Biting Cold
+        182637, -- Memory of Death's Certainty
+        183213, -- Memory of the Anguish of the Collective
+        183228, -- Memory of Arcane Pulsars
+        183230, -- Memory of the Apex Predator
+        183231, -- Memory of a Cat-Eye Curio
+        183250, -- Memory of the Wild Call
+        183260, -- Memory of the Serpentstalker's Trickery
+        183269, -- Memory of the Triune Ward
+        183314, -- Memory of Cauterizing Shadows
+        183317, -- Memory of a Heavenly Vault
+        183337, -- Memory of the Zoldyck Insignia
+        183345, -- Memory of the Rotten
+        183363, -- Memory of Azj'Aqir's Agony
+        183366, -- Memory of the Claw of Endereth
+        183381, -- Memory of the Tormented Kings
+        183387, -- Memory of the Deathmaker
+        186577, -- Memory of the Unbridled Swarm
+        186673, -- Memory of Kindred Affinity
+        191645, -- Memory of Unity
+        183257, -- Memory of the Rylakstalker's Fangs
+        183266, -- Memory of the Disciplinary Command
+        183297, -- Memory of Xuen
+        183303, -- Memory of Maraad's Dying Breath
+        183336, -- Memory of the Duskwalker's Patch
+        186576, -- Memory of Nature's Fury
+        186775, -- Memory of Resounding Clarity
+        187109, -- Memory of a Blazing Slaughter
+        187160, -- Memory of Pallid Command
+        187227, -- Memory of the Decaying Soul Satchel
+        187230, -- Memory of the Bag of Munitions
+        187237, -- Memory of a Call to Arms
+        190594, -- Memory of Unity
+        191637, -- Memory of Unity
+        191638, -- Memory of Unity
+        182631, -- Memory of a Vampiric Aura
+        183210, -- Memory of a Fel Bombardment
+        183247, -- Memory of a Stable Phantasma Lure
+        183271, -- Memory of the Infinite Arcane
+        183290, -- Memory of Ancient Teachings
+        183323, -- Memory of Flash Concentration
+        183350, -- Memory of the Great Sundering
+        183354, -- Memory of the Doom Winds
+        183371, -- Memory of the Horned Nightmare
+        183379, -- Memory of the Misshapen Mirror
+        183386, -- Memory of Fujieda
+        183392, -- Memory of the Thunderlord
+        191640, -- Memory of Unity
+        183307, -- Memory of a Holy Sigil
+        183327, -- Memory of the Painbreaker Psalm
+        183338, -- Memory of Celerity
+        183385, -- Memory of the Unhinged
+        186635, -- Memory of Sinful Delight
+        187106, -- Memory of Divine Resonance
+        191636, -- Memory of Unity
+        191639, -- Memory of Unity
+        191634, -- Memory of Unity
+        191642, -- Memory of Unity
+        191643, -- Memory of Unity
+        191644, -- Memory of Unity
+    },
 }
 
 local legendaryCategories = {
@@ -65,7 +793,7 @@ function CraftingLegendaries:WrapLegendaryCategoryText(category)
 end
 
 function CraftingLegendaries:KillOldCategories()
-    for _, category in ipairs(legendaryCategories) do
+    for _, category in pairs(legendaryCategories) do
         categories:WipeCategory(category)
         categories:WipeCategory(L:G(category))
         categories:WipeCategory(self:GetCategoryName(category))
@@ -78,750 +806,19 @@ end
 function CraftingLegendaries:AddTablesToCategories()
     -- Loop through the tables in the legendary table.
     for categoryName, categoryContents in pairs(legendary) do
+        local resolvedCategoryName = self:GetCategoryName(categoryName)
         --@debug@
-        print("Category \"" .. self:GetCategoryName(categoryName) .. "\" created.")
+        print("Category \"" .. resolvedCategoryName .. "\" created.")
         --@end-debug@
-        
+
         -- Loop through the items in the category and add to correct category.
-        for _, item in ipairs(categoryContents) do
-            categories:AddItemToCategory(item.itemID, self:GetCategoryName(categoryName))
+        for _, itemID in ipairs(categoryContents) do
+            categories:AddItemToCategory(itemID, resolvedCategoryName)
             --@debug@
-            print("Added " .. item.itemName .. " to category " .. self:GetCategoryName(categoryName))
+            print("Added " .. itemID .. " to category " .. resolvedCategoryName)
             --@end-debug@
         end
     end
-end
-
-function CraftingLegendaries:AddItemsToTables()
-    -- Atiesh, Greatstaff of the Guardian
-    table.insert(legendary.atiesh, {itemID = 22589, itemName = "Atiesh, Greatstaff of the Guardian (Mage)"})
-    table.insert(legendary.atiesh, {itemID = 22630, itemName = "Atiesh, Greatstaff of the Guardian (Warlock)"})
-    table.insert(legendary.atiesh, {itemID = 22631, itemName = "Atiesh, Greatstaff of the Guardian (Priest)"})
-    table.insert(legendary.atiesh, {itemID = 22632, itemName = "Atiesh, Greatstaff of the Guardian (Druid)"})
-    table.insert(legendary.atiesh, {itemID = 22726, itemName = "Splinter of Atiesh"})
-    table.insert(legendary.atiesh, {itemID = 22727, itemName = "Frame of Atiesh"})
-    table.insert(legendary.atiesh, {itemID = 22733, itemName = "Staff Head of Atiesh"})
-    table.insert(legendary.atiesh, {itemID = 22734, itemName = "Base of Atiesh"})
-    table.insert(legendary.atiesh, {itemID = 22737, itemName = "Atiesh, Greatstaff of the Guardian (Quest)"})
-    -- Sulfuras, Hand of Ragnaros
-    table.insert(legendary.sulfuras, {itemID = 17182, itemName = "Sulfuras, Hand of Ragnaros"})
-    table.insert(legendary.sulfuras, {itemID = 17193, itemName = "Sulfuron Hammer"})
-    table.insert(legendary.sulfuras, {itemID = 17203, itemName = "Sulfuron Ingot"})
-    table.insert(legendary.sulfuras, {itemID = 17204, itemName = "Eye of Sulfuras"})
-    -- Thunderfury, Blessed Blade of the Windseeker
-    table.insert(legendary.thunderfury, {itemID = 17771, itemName = "Enchanted Elementium Bar"})
-    table.insert(legendary.thunderfury, {itemID = 18562, itemName = "Elementium Ingot"})
-    table.insert(legendary.thunderfury, {itemID = 18563, itemName = "Bindings of the Windseeker (Left)"})
-    table.insert(legendary.thunderfury, {itemID = 18564, itemName = "Bindings of the Windseeker (Right)"})
-    table.insert(legendary.thunderfury, {itemID = 19017, itemName = "Essence of the Firelord"})
-    table.insert(legendary.thunderfury, {itemID = 19019, itemName = "Thunderfury, Blessed Blade of the Windseeker"})
-    -- Warglaives of Azzinoth
-    table.insert(legendary.warglaives, {itemID = 32837, itemName = "Warglaive of Azzinoth"})
-    table.insert(legendary.warglaives, {itemID = 32838, itemName = "Warglaive of Azzinoth"})
-    -- Thori'dal, the Stars' Fury
-    table.insert(legendary.thoridal, {itemID = 34334, itemName = "Thori'dal, the Stars' Fury"})
-    -- Val'anyr, Hammer of Ancient Kings
-    table.insert(legendary.valanyr, {itemID = 45038, itemName = "Fragment of Val'anyr"})
-    table.insert(legendary.valanyr, {itemID = 45039, itemName = "Shattered Fragments of Val'anyr"})
-    table.insert(legendary.valanyr, {itemID = 45896, itemName = "Unbound Fragments of Val'anyr"})
-    table.insert(legendary.valanyr, {itemID = 46017, itemName = "Val'anyr, Hammer of Ancient Kings"})
-    -- Shadowmourne
-    table.insert(legendary.shadowmourne, {itemID = 49623, itemName = "Shadowmourne"})
-    table.insert(legendary.shadowmourne, {itemID = 49888, itemName = "Shadow's Edge"})
-    table.insert(legendary.shadowmourne, {itemID = 49869, itemName = "Light's Vengeance"})
-    table.insert(legendary.shadowmourne, {itemID = 50226, itemName = "Festergut's Acidic Blood"})
-    table.insert(legendary.shadowmourne, {itemID = 50231, itemName = "Rotface's Acidic Blood"})
-    table.insert(legendary.shadowmourne, {itemID = 50274, itemName = "Shadowfrost Shard"})
-    -- Dragonwrath, Tarecgosa's Rest
-    table.insert(legendary.dragonwrath, {itemID = 69646, itemName = "Branch of Nordrassil (Quest)"})
-    table.insert(legendary.dragonwrath, {itemID = 69815, itemName = "Seething Cinder"})
-    table.insert(legendary.dragonwrath, {itemID = 69848, itemName = "Heart of Flame"})
-    table.insert(legendary.dragonwrath, {itemID = 70994, itemName = "Pyreshell Fragment"})
-    table.insert(legendary.dragonwrath, {itemID = 70995, itemName = "Dull Pyreshell Focus"})
-    table.insert(legendary.dragonwrath, {itemID = 70996, itemName = "Dull Rhyolite Focus"})
-    table.insert(legendary.dragonwrath, {itemID = 70997, itemName = "Rhyolite Fragment"})
-    table.insert(legendary.dragonwrath, {itemID = 70998, itemName = "Dull Chitinous Focus"})
-    table.insert(legendary.dragonwrath, {itemID = 70999, itemName = "Obsidian-Flecked Chitin Fragment"})
-    table.insert(legendary.dragonwrath, {itemID = 71000, itemName = "Emberstone Fragment"})
-    table.insert(legendary.dragonwrath, {itemID = 71001, itemName = "Dull Emberstone Focus"})
-    table.insert(legendary.dragonwrath, {itemID = 71008, itemName = "Charged Rhyolite Focus"})
-    table.insert(legendary.dragonwrath, {itemID = 71015, itemName = "Charged Emberstone Focus"})
-    table.insert(legendary.dragonwrath, {itemID = 71016, itemName = "Charged Pyreshell Focus"})
-    table.insert(legendary.dragonwrath, {itemID = 71017, itemName = "Charged Chitinous Focus"})
-    table.insert(legendary.dragonwrath, {itemID = 71084, itemName = "Branch of Nordrassil (Staff 1)"})
-    table.insert(legendary.dragonwrath, {itemID = 71085, itemName = "Branch of Nordrassil (Staff 2)"})
-    table.insert(legendary.dragonwrath, {itemID = 71086, itemName = "Dragonwrath, Tarecgosa's Rest"})
-    table.insert(legendary.dragonwrath, {itemID = 71141, itemName = "Eternal Ember"})
-    -- Fangs of the Father
-    table.insert(legendary.fangs, {itemID = 74246, itemName = "Cryptomancer's Decoder Ring"})
-    table.insert(legendary.fangs, {itemID = 74748, itemName = "Charged Decoder Ring"})
-    table.insert(legendary.fangs, {itemID = 74750, itemName = "Singed Cipher"})
-    table.insert(legendary.fangs, {itemID = 77945, itemName = "Fear"})
-    table.insert(legendary.fangs, {itemID = 77946, itemName = "Vengeance"})
-    table.insert(legendary.fangs, {itemID = 77947, itemName = "The Sleeper"})
-    table.insert(legendary.fangs, {itemID = 77948, itemName = "The Dreamer"})
-    table.insert(legendary.fangs, {itemID = 77949, itemName = "Golad, Twilight of Aspects"})
-    table.insert(legendary.fangs, {itemID = 77950, itemName = "Tiriosh, Nightmare of Ages"})
-    table.insert(legendary.fangs, {itemID = 77951, itemName = "Shadowy Gem"})
-    table.insert(legendary.fangs, {itemID = 77952, itemName = "Elementium Gem Cluster"})
-    -- Ashjrakamas, Shroud of Resolve
-    table.insert(legendary.ashjrakamas, {itemID = 169223, itemName = "Ashjra'kamas, Shroud of Resolve"})
-    table.insert(legendary.ashjrakamas, {itemID = 171335, itemName = "Corrupting Core"})
-    table.insert(legendary.ashjrakamas, {itemID = 174777, itemName = "The Curse of Stone"})
-    table.insert(legendary.ashjrakamas, {itemID = 171353, itemName = "Torn Page of 'The Curse of Stone'"})
-    table.insert(legendary.ashjrakamas, {itemID = 171354, itemName = "Horrific Core"})
-    table.insert(legendary.ashjrakamas, {itemID = 174782, itemName = "Fear and Flesh"})
-    table.insert(legendary.ashjrakamas, {itemID = 174783, itemName = "Torn Page of 'Fear and Flesh'"})
-    table.insert(legendary.ashjrakamas, {itemID = 174784, itemName = "The Final Truth"})
-    table.insert(legendary.ashjrakamas, {itemID = 174785, itemName = "Torn Page of 'The Final Truth'"})
-    table.insert(legendary.ashjrakamas, {itemID = 171355, itemName = "Voidborn Core"})
-    table.insert(legendary.ashjrakamas, {itemID = 175062, itemName = "Malefic Core"})
-    -- Raeshalare, Death's Whisper
-    table.insert(legendary.raeshalare, {itemID = 186414, itemName = "Rae'shalare, Death's Whisper"})
-    -- Naszuro, Bond of the Tormented
-    table.insert(legendary.naszuro, {itemID = 204177, itemName = "Nasz'uro, Bond of the Tormented"})
-    table.insert(legendary.naszuro, {itemID = 204255, itemName = "Cracked Titan Gem"})
-    table.insert(legendary.naszuro, {itemID = 205257, itemName = "Temporal Vestigial"})
-    table.insert(legendary.naszuro, {itemID = 204832, itemName = "Reclaimed Gauntlet Chassis"})
-    table.insert(legendary.naszuro, {itemID = 204854, itemName = "Immaculate Coalescing Dracothyst"})
-    table.insert(legendary.naszuro, {itemID = 204856, itemName = "Inspired Order Recalibrator"})
-    table.insert(legendary.naszuro, {itemID = 204857, itemName = "Ancient Elementium Fragment"})
-    table.insert(legendary.naszuro, {itemID = 205260, itemName = "Fleeting Glowspores"})
-    table.insert(legendary.naszuro, {itemID = 205258, itemName = "Everburning Shadowflame"})
-    -- Fyralath, the Dreamrender
-    table.insert(legendary.fyralath, {itemID = 206448, itemName = "Fyr'alath, the Dreamrender (Complete)"})
-    table.insert(legendary.fyralath, {itemID = 207728, itemName = "Fyr'alath, the Dreamrender (Incomplete)"})
-    table.insert(legendary.fyralath, {itemID = 208577, itemName = "Symbiotic Glowspore Grip"})
-    table.insert(legendary.fyralath, {itemID = 208593, itemName = "Shadowed Dreamleaf"})
-    table.insert(legendary.fyralath, {itemID = 209351, itemName = "Erden's Dreamleaf Grip"})
-    table.insert(legendary.fyralath, {itemID = 210009, itemName = "Prototype Dreamleaf Grip"})
-    table.insert(legendary.fyralath, {itemID = 208578, itemName = "Concentrated Sophic Vellum"})
-    table.insert(legendary.fyralath, {itemID = 208581, itemName = "Radiant Fleck of Ash"})
-    table.insert(legendary.fyralath, {itemID = 210001, itemName = "Prototype Order Vellum"})
-    table.insert(legendary.fyralath, {itemID = 210003, itemName = "Shalasar's Sophic Vellum"})
-    table.insert(legendary.fyralath, {itemID = 208592, itemName = "Rune of Shadowbinding"})
-    table.insert(legendary.fyralath, {itemID = 208595, itemName = "Taut Tethercoil"})
-    table.insert(legendary.fyralath, {itemID = 209352, itemName = "Prototype Binding Rune"})
-    table.insert(legendary.fyralath, {itemID = 209998, itemName = "Lydiara's Binding Rune"})
-    -- Mists of Pandaria Legendary Capes
-    table.insert(legendary.mists, {itemID = 102245, itemName = "Qian-Le, Courage of Niuzao"})
-    table.insert(legendary.mists, {itemID = 102246, itemName = "Xing-Ho, Breath of Yu'lon"})
-    table.insert(legendary.mists, {itemID = 102247, itemName = "Jina-Kang, Kindness of Chi-Ji"})
-    table.insert(legendary.mists, {itemID = 102248, itemName = "Fen-Yu, Fury of Xuen"})
-    table.insert(legendary.mists, {itemID = 102249, itemName = "Gong-Lu, Strength of Xuen"})
-    table.insert(legendary.mists, {itemID = 102250, itemName = "Qian-Ying, Fortitude of Niuzao"})
-    -- Warlords of Draenor Legendary Rings
-    table.insert(legendary.wod, {itemID = 114780, itemName = "Pure Solium Band"})
-    table.insert(legendary.wod, {itemID = 118290, itemName = "Solium Band of Might"})
-    table.insert(legendary.wod, {itemID = 118291, itemName = "Solium Band of Wisdom"})
-    table.insert(legendary.wod, {itemID = 118292, itemName = "Solium Band of Dexterity"})
-    table.insert(legendary.wod, {itemID = 118293, itemName = "Solium Band of Endurance"})
-    table.insert(legendary.wod, {itemID = 118294, itemName = "Solium Band of Mending"})
-    table.insert(legendary.wod, {itemID = 113682, itemName = "Core of Flame"})
-    table.insert(legendary.wod, {itemID = 114107, itemName = "Core of Iron"})
-    table.insert(legendary.wod, {itemID = 114138, itemName = "Core of Life"})
-    table.insert(legendary.wod, {itemID = 114240, itemName = "Corrupted Blood of Teron'gor"})
-    table.insert(legendary.wod, {itemID = 115280, itemName = "Abrogator Stone"})
-    table.insert(legendary.wod, {itemID = 115288, itemName = "Felbreaker's Tome"})
-    table.insert(legendary.wod, {itemID = 115289, itemName = "Sigil of the Sorcerer King"})
-    table.insert(legendary.wod, {itemID = 115479, itemName = "Heart of the Fury"})
-    table.insert(legendary.wod, {itemID = 115493, itemName = "Flamebender's Tome"})
-    table.insert(legendary.wod, {itemID = 115494, itemName = "Draenic Thaumaturgical Orb"})
-    table.insert(legendary.wod, {itemID = 115509, itemName = "Elemental Tablet"})
-    table.insert(legendary.wod, {itemID = 115510, itemName = "Elemental Rune"})
-    table.insert(legendary.wod, {itemID = 115523, itemName = "Blackhand's Severed Arm"})
-    table.insert(legendary.wod, {itemID = 115981, itemName = "Abrogator Stone Cluster"})
-    table.insert(legendary.wod, {itemID = 118295, itemName = "Timeless Solium Band of Brutality"})
-    table.insert(legendary.wod, {itemID = 118296, itemName = "Timeless Solium Band of the Archmage"})
-    table.insert(legendary.wod, {itemID = 118297, itemName = "Timeless Solium Band of the Assassin"})
-    table.insert(legendary.wod, {itemID = 118298, itemName = "Timeless Solium Band of the Bulwark"})
-    table.insert(legendary.wod, {itemID = 118299, itemName = "Timeless Solium Band of Lifegiving"})
-    table.insert(legendary.wod, {itemID = 118300, itemName = "Spellbound Solium Band of Sorcerous Strength"})
-    table.insert(legendary.wod, {itemID = 118301, itemName = "Spellbound Solium Band of the Kirin-Tor"})
-    table.insert(legendary.wod, {itemID = 118302, itemName = "Spellbound Solium Band of Fatal Strikes"})
-    table.insert(legendary.wod, {itemID = 118303, itemName = "Spellbound Solium Band of Sorcerous Invincibility"})
-    table.insert(legendary.wod, {itemID = 118304, itemName = "Spellbound Solium Band of the Immortal Spirit"})
-    table.insert(legendary.wod, {itemID = 118305, itemName = "Spellbound Runic Band of Elemental Power"})
-    table.insert(legendary.wod, {itemID = 118306, itemName = "Spellbound Runic Band of the All-Seeing Eye"})
-    table.insert(legendary.wod, {itemID = 118307, itemName = "Spellbound Runic Band of Unrelenting Slaughter"})
-    table.insert(legendary.wod, {itemID = 118308, itemName = "Spellbound Runic Band of Elemental Invincibility"})
-    table.insert(legendary.wod, {itemID = 118309, itemName = "Spellbound Runic Band of Infinite Preservation"})
-    table.insert(legendary.wod, {itemID = 122155, itemName = "Orb of Dominion"})
-    table.insert(legendary.wod, {itemID = 124634, itemName = "Thorasus, the Stone Heart of Draenor"})
-    table.insert(legendary.wod, {itemID = 124635, itemName = "Nithramus, the All-Seer"})
-    table.insert(legendary.wod, {itemID = 124636, itemName = "Maalus, the Blood Drinker"})
-    table.insert(legendary.wod, {itemID = 124637, itemName = "Sanctus, Sigil of the Unbroken"})
-    table.insert(legendary.wod, {itemID = 124638, itemName = "Etheralus, the Eternal Reward"})
-    table.insert(legendary.wod, {itemID = 127115, itemName = "Tome of Chaos"})
-    table.insert(legendary.wod, {itemID = 127785, itemName = "Crystallized Fel"})
-    table.insert(legendary.wod, {itemID = 128693, itemName = "Draenic Sea Chart"})
-    -- Legion Legendary Items
-    table.insert(legendary.legion, {itemID = 132452, itemName = "Sephuz's Secret"})
-    table.insert(legendary.legion, {itemID = 132444, itemName = "Prydaz, Xavaric's Magnum Opus"})
-    table.insert(legendary.legion, {itemID = 151801, itemName = "Behemoth Headdress"})
-    table.insert(legendary.legion, {itemID = 151644, itemName = "Soul of the Highlord"})
-    table.insert(legendary.legion, {itemID = 132443, itemName = "Aggramar's Stride"})
-    table.insert(legendary.legion, {itemID = 144258, itemName = "Velen's Future Sight"})
-    table.insert(legendary.legion, {itemID = 144361, itemName = "Butcher's Bone Apron"})
-    table.insert(legendary.legion, {itemID = 144385, itemName = "Wakener's Loyalty"})
-    table.insert(legendary.legion, {itemID = 144303, itemName = "MKII Gyroscopic Stabilizer"})
-    table.insert(legendary.legion, {itemID = 151821, itemName = "The Master Harvester"})
-    table.insert(legendary.legion, {itemID = 132374, itemName = "Kazzak's Final Curse"})
-    table.insert(legendary.legion, {itemID = 137038, itemName = "Anger of the Half-Giants"})
-    table.insert(legendary.legion, {itemID = 132375, itemName = "Odr, Shawl of the Ymirjar"})
-    table.insert(legendary.legion, {itemID = 137033, itemName = "Ullr's Feather Snowshoes"})
-    table.insert(legendary.legion, {itemID = 151802, itemName = "Fury of Nature"})
-    table.insert(legendary.legion, {itemID = 151800, itemName = "Radiant Moonlight"})
-    table.insert(legendary.legion, {itemID = 137382, itemName = "The Apex Predator's Claw"})
-    table.insert(legendary.legion, {itemID = 132410, itemName = "Shard of the Exodar"})
-    table.insert(legendary.legion, {itemID = 133977, itemName = "Belo'vir's Final Stand"})
-    table.insert(legendary.legion, {itemID = 132379, itemName = "Sin'dorei Spite"})
-    table.insert(legendary.legion, {itemID = 137042, itemName = "Tearstone of Elune"})
-    table.insert(legendary.legion, {itemID = 137072, itemName = "Aman'Thul's Wisdom"})
-    table.insert(legendary.legion, {itemID = 141321, itemName = "Shivarran Symmetry"})
-    table.insert(legendary.legion, {itemID = 137047, itemName = "Heathcliff's Immortality"})
-    table.insert(legendary.legion, {itemID = 132407, itemName = "Magistrike Restraints"})
-    table.insert(legendary.legion, {itemID = 133974, itemName = "Lana'thel's Lament"})
-    table.insert(legendary.legion, {itemID = 137094, itemName = "The Wildshaper's Clutch"})
-    table.insert(legendary.legion, {itemID = 154172, itemName = "Aman'Thul's Vision"})
-    table.insert(legendary.legion, {itemID = 146669, itemName = "The Sentinel's Eternal Refuge"})
-    table.insert(legendary.legion, {itemID = 137061, itemName = "Raddon's Cascading Eyes"})
-    table.insert(legendary.legion, {itemID = 146666, itemName = "Celumbra, the Night's Dichotomy"})
-    table.insert(legendary.legion, {itemID = 146667, itemName = "Rethu's Incessant Courage"})
-    table.insert(legendary.legion, {itemID = 151824, itemName = "Valarjar Berserkers"})
-    table.insert(legendary.legion, {itemID = 137064, itemName = "The Shadow Hunter's Voodoo Mask"})
-    table.insert(legendary.legion, {itemID = 143728, itemName = "Timeless Stratagem"})
-    table.insert(legendary.legion, {itemID = 143732, itemName = "Uncertain Reminder"})
-    table.insert(legendary.legion, {itemID = 137088, itemName = "Ceann-Ar Charger"})
-    table.insert(legendary.legion, {itemID = 137109, itemName = "X'anshi, Shroud of Archbishop Benedictus"})
-    table.insert(legendary.legion, {itemID = 144369, itemName = "Lessons of Space-Time"})
-    table.insert(legendary.legion, {itemID = 132409, itemName = "Anund's Seared Shackles"})
-    table.insert(legendary.legion, {itemID = 137015, itemName = "Ekowraith, Creator of Worlds"})
-    table.insert(legendary.legion, {itemID = 151636, itemName = "Soul of the Archdruid"})
-    table.insert(legendary.legion, {itemID = 137076, itemName = "Obsidian Stone Spaulders"})
-    table.insert(legendary.legion, {itemID = 144259, itemName = "Kil'jaeden's Burning Wish"})
-    table.insert(legendary.legion, {itemID = 144279, itemName = "Delusions of Grandeur"})
-    table.insert(legendary.legion, {itemID = 144358, itemName = "Ashes to Dust"})
-    table.insert(legendary.legion, {itemID = 151814, itemName = "Heart of the Void"})
-    table.insert(legendary.legion, {itemID = 137020, itemName = "Whisper of the Nathrezim"})
-    table.insert(legendary.legion, {itemID = 151812, itemName = "Pillars of Inmost Light"})
-    table.insert(legendary.legion, {itemID = 137084, itemName = "Akainu's Absolute Justice"})
-    table.insert(legendary.legion, {itemID = 137098, itemName = "Zoldyck Family Training Shackles"})
-    table.insert(legendary.legion, {itemID = 140846, itemName = "Aegisjalmur, the Armguards of Awe"})
-    table.insert(legendary.legion, {itemID = 151650, itemName = "Soul of the Battlelord"})
-    table.insert(legendary.legion, {itemID = 137108, itemName = "Kakushan's Stormscale Gauntlets"})
-    table.insert(legendary.legion, {itemID = 146668, itemName = "Vigilance Perch"})
-    table.insert(legendary.legion, {itemID = 151811, itemName = "The Wind Blows"})
-    table.insert(legendary.legion, {itemID = 132863, itemName = "Darckli's Dragonfire Diadem"})
-    table.insert(legendary.legion, {itemID = 151823, itemName = "The Great Storm's Eye"})
-    table.insert(legendary.legion, {itemID = 137062, itemName = "The Emerald Dreamcatcher"})
-    table.insert(legendary.legion, {itemID = 152626, itemName = "Insignia of the Grand Army"})
-    table.insert(legendary.legion, {itemID = 132436, itemName = "Skjoldr, Sanctuary of Ivagont"})
-    table.insert(legendary.legion, {itemID = 144281, itemName = "Skullflower's Haemostasis"})
-    table.insert(legendary.legion, {itemID = 132376, itemName = "Acherus Drapes"})
-    table.insert(legendary.legion, {itemID = 137017, itemName = "Breastplate of the Golden Val'kyr"})
-    table.insert(legendary.legion, {itemID = 137039, itemName = "Impeccable Fel Essence"})
-    table.insert(legendary.legion, {itemID = 141353, itemName = "Magnetized Blasting Cap Launcher"})
-    table.insert(legendary.legion, {itemID = 133800, itemName = "Cord of Maiev, Priestess of the Moon"})
-    table.insert(legendary.legion, {itemID = 133973, itemName = "The Twins' Painful Touch"})
-    table.insert(legendary.legion, {itemID = 137059, itemName = "Tyr's Hand of Faith"})
-    table.insert(legendary.legion, {itemID = 137107, itemName = "Mannoroth's Bloodletting Manacles"})
-    table.insert(legendary.legion, {itemID = 144280, itemName = "Death March"})
-    table.insert(legendary.legion, {itemID = 151641, itemName = "Soul of the Huntmaster"})
-    table.insert(legendary.legion, {itemID = 132406, itemName = "Marquee Bindings of the Sun King"})
-    table.insert(legendary.legion, {itemID = 132454, itemName = "Koralon's Burning Touch"})
-    table.insert(legendary.legion, {itemID = 132455, itemName = "Norgannon's Foresight"})
-    table.insert(legendary.legion, {itemID = 137065, itemName = "Justice Gaze"})
-    table.insert(legendary.legion, {itemID = 137066, itemName = "Cloak of Fel Flames"})
-    table.insert(legendary.legion, {itemID = 137069, itemName = "Will of Valeera"})
-    table.insert(legendary.legion, {itemID = 137105, itemName = "Uther's Guard"})
-    table.insert(legendary.legion, {itemID = 144326, itemName = "The Mantle of Command"})
-    table.insert(legendary.legion, {itemID = 132411, itemName = "Lady Vashj's Grasp"})
-    table.insert(legendary.legion, {itemID = 137052, itemName = "Ayala's Stone Heart"})
-    table.insert(legendary.legion, {itemID = 137056, itemName = "Luffa Wrappings"})
-    table.insert(legendary.legion, {itemID = 137083, itemName = "Pristine Proto-Scale Girdle"})
-    table.insert(legendary.legion, {itemID = 144244, itemName = "Kam Xi'raff"})
-    table.insert(legendary.legion, {itemID = 144249, itemName = "Archimonde's Hatred Reborn"})
-    table.insert(legendary.legion, {itemID = 151784, itemName = "Doorway to Nowhere"})
-    table.insert(legendary.legion, {itemID = 151817, itemName = "The Curse of Restlessness"})
-    table.insert(legendary.legion, {itemID = 132449, itemName = "Phyrix's Embrace"})
-    table.insert(legendary.legion, {itemID = 132466, itemName = "Roots of Shaladrassil"})
-    table.insert(legendary.legion, {itemID = 133976, itemName = "Cinidaria, the Symbiote"})
-    table.insert(legendary.legion, {itemID = 137092, itemName = "Oneth's Intuition"})
-    table.insert(legendary.legion, {itemID = 137100, itemName = "Denial of the Half-Giants"})
-    table.insert(legendary.legion, {itemID = 132413, itemName = "Rhonin's Assaulting Armwraps"})
-    table.insert(legendary.legion, {itemID = 137014, itemName = "Achor, the Eternal Hunger"})
-    table.insert(legendary.legion, {itemID = 137074, itemName = "Echoes of the Great Sundering"})
-    table.insert(legendary.legion, {itemID = 151639, itemName = "Soul of the Slayer"})
-    table.insert(legendary.legion, {itemID = 151798, itemName = "Chaos Theory"})
-    table.insert(legendary.legion, {itemID = 132453, itemName = "Rattlegore Bone Legplates"})
-    table.insert(legendary.legion, {itemID = 137026, itemName = "Essence of Infusion"})
-    table.insert(legendary.legion, {itemID = 137045, itemName = "Eye of Collidus the Warp-Watcher"})
-    table.insert(legendary.legion, {itemID = 144355, itemName = "Pyrotex Ignition Cloth"})
-    table.insert(legendary.legion, {itemID = 144438, itemName = "Zeks Exterminatus"})
-    table.insert(legendary.legion, {itemID = 132437, itemName = "Mother Shahraz's Seduction"})
-    table.insert(legendary.legion, {itemID = 151783, itemName = "Chameleon Song"})
-    table.insert(legendary.legion, {itemID = 151795, itemName = "Soulflayer's Corruption"})
-    table.insert(legendary.legion, {itemID = 132394, itemName = "Hood of Eternal Disdain"})
-    table.insert(legendary.legion, {itemID = 132459, itemName = "Perseverance of the Ebon Martyr"})
-    table.insert(legendary.legion, {itemID = 133971, itemName = "Zenk'aram, Iridi's Anadem"})
-    table.insert(legendary.legion, {itemID = 137031, itemName = "Thraxi's Tricksy Treads"})
-    table.insert(legendary.legion, {itemID = 137037, itemName = "Uvanimor, the Unbeautiful"})
-    table.insert(legendary.legion, {itemID = 137051, itemName = "Focuser of Jonat, the Elder"})
-    table.insert(legendary.legion, {itemID = 137060, itemName = "Archavon's Heavy Hand"})
-    table.insert(legendary.legion, {itemID = 137089, itemName = "Thundergod's Vigor"})
-    table.insert(legendary.legion, {itemID = 138140, itemName = "Magtheridon's Banished Bracers"})
-    table.insert(legendary.legion, {itemID = 151782, itemName = "The Topless Tower"})
-    table.insert(legendary.legion, {itemID = 132445, itemName = "Al'maiesh, the Cord of Hope"})
-    table.insert(legendary.legion, {itemID = 132861, itemName = "Estel, Dejahna's Inspiration"})
-    table.insert(legendary.legion, {itemID = 137050, itemName = "Eye of the Twisting Nether"})
-    table.insert(legendary.legion, {itemID = 137090, itemName = "Mo'arg Bionic Stabilizers"})
-    table.insert(legendary.legion, {itemID = 137101, itemName = "Call of the Wild"})
-    table.insert(legendary.legion, {itemID = 151649, itemName = "Soul of the Netherlord"})
-    table.insert(legendary.legion, {itemID = 151796, itemName = "Cold Heart"})
-    table.insert(legendary.legion, {itemID = 151809, itemName = "Contained Infernal Core"})
-    table.insert(legendary.legion, {itemID = 151813, itemName = "Scarlet Inquisitor's Expurgation"})
-    table.insert(legendary.legion, {itemID = 132357, itemName = "Pillars of the Dark Portal"})
-    table.insert(legendary.legion, {itemID = 132448, itemName = "The Instructor's Fourth Lesson"})
-    table.insert(legendary.legion, {itemID = 137024, itemName = "Ailuro Pouncers"})
-    table.insert(legendary.legion, {itemID = 137036, itemName = "Elemental Rebalancers"})
-    table.insert(legendary.legion, {itemID = 137048, itemName = "Liadrin's Fury Unleashed"})
-    table.insert(legendary.legion, {itemID = 137095, itemName = "Edraith, Bonds of Aglaya"})
-    table.insert(legendary.legion, {itemID = 137097, itemName = "Drinking Horn Cover"})
-    table.insert(legendary.legion, {itemID = 151803, itemName = "Celerity of the Windrunners"})
-    table.insert(legendary.legion, {itemID = 144274, itemName = "Gravity Spiral"})
-    table.insert(legendary.legion, {itemID = 144295, itemName = "Lady and the Child"})
-    table.insert(legendary.legion, {itemID = 151788, itemName = "Stormstout's Last Gasp"})
-    table.insert(legendary.legion, {itemID = 132378, itemName = "Sacrolash's Dark Strike"})
-    table.insert(legendary.legion, {itemID = 132441, itemName = "Draugr, Girdle of the Everlasting King"})
-    table.insert(legendary.legion, {itemID = 132456, itemName = "Feretory of Souls"})
-    table.insert(legendary.legion, {itemID = 137019, itemName = "Cenedril, Reflector of Hatred"})
-    table.insert(legendary.legion, {itemID = 137041, itemName = "Dual Determination"})
-    table.insert(legendary.legion, {itemID = 137057, itemName = "Hidden Master's Forbidden Touch"})
-    table.insert(legendary.legion, {itemID = 137053, itemName = "Tak'theritrix's Shoulderpads"})
-    table.insert(legendary.legion, {itemID = 137082, itemName = "Weight of the Earth"})
-    table.insert(legendary.legion, {itemID = 137086, itemName = "War Belt of the Sentinel Army"})
-    table.insert(legendary.legion, {itemID = 137104, itemName = "The Defiler's Lost Vambraces"})
-    table.insert(legendary.legion, {itemID = 144236, itemName = "March of the Legion"})
-    table.insert(legendary.legion, {itemID = 151646, itemName = "Kirel Narak"})
-    table.insert(legendary.legion, {itemID = 151808, itemName = "The Empty Crown"})
-    table.insert(legendary.legion, {itemID = 151822, itemName = "The First of the Dead"})
-    table.insert(legendary.legion, {itemID = 132366, itemName = "Recurrent Ritual"})
-    table.insert(legendary.legion, {itemID = 132381, itemName = "Promise of Elune, the Moon Goddess"})
-    table.insert(legendary.legion, {itemID = 132458, itemName = "Ei'thas, Lunar Glides of Eramas"})
-    table.insert(legendary.legion, {itemID = 137018, itemName = "Unison Spaulders"})
-    table.insert(legendary.legion, {itemID = 137068, itemName = "Emalon's Charged Core"})
-    table.insert(legendary.legion, {itemID = 137087, itemName = "Ice Time"})
-    table.insert(legendary.legion, {itemID = 137223, itemName = "Soul of the Archmage"})
-    table.insert(legendary.legion, {itemID = 138879, itemName = "The Alabaster Lady"})
-    table.insert(legendary.legion, {itemID = 144275, itemName = "Parsel's Tongue"})
-    table.insert(legendary.legion, {itemID = 144292, itemName = "Power Cord of Lethtendris"})
-    table.insert(legendary.legion, {itemID = 151786, itemName = "The Dreadlord's Deceit"})
-    table.insert(legendary.legion, {itemID = 151799, itemName = "Firestone Walkers"})
-    table.insert(legendary.legion, {itemID = 132450, itemName = "Kazzalax, Fujieda's Fury"})
-    table.insert(legendary.legion, {itemID = 137025, itemName = "Helbrine, Rope of the Mist Marauder"})
-    table.insert(legendary.legion, {itemID = 137032, itemName = "Chain of Thrayn"})
-    table.insert(legendary.legion, {itemID = 137044, itemName = "Nobundo's Redemption"})
-    table.insert(legendary.legion, {itemID = 137054, itemName = "Mantle of the Master Assassin"})
-    table.insert(legendary.legion, {itemID = 137078, itemName = "Soul of the High Priest"})
-    table.insert(legendary.legion, {itemID = 137102, itemName = "Mantle of the First Kirin Tor"})
-    table.insert(legendary.legion, {itemID = 144239, itemName = "Ararat's Bloodmirror"})
-    table.insert(legendary.legion, {itemID = 144242, itemName = "Koltira's Newfound Will"})
-    table.insert(legendary.legion, {itemID = 144364, itemName = "Streten's Sleepless Shackles"})
-    table.insert(legendary.legion, {itemID = 144432, itemName = "Toravon's Whiteout Bindings"})
-    table.insert(legendary.legion, {itemID = 151819, itemName = "Destiny Driver"})
-    table.insert(legendary.legion, {itemID = 132460, itemName = "Leggings of The Black Flame"})
-    table.insert(legendary.legion, {itemID = 137055, itemName = "Naj'entus's Vertebrae"})
-    table.insert(legendary.legion, {itemID = 137058, itemName = "Seal of Necrofantasia"})
-    table.insert(legendary.legion, {itemID = 137067, itemName = "Ovyd's Winter Wrap"})
-    table.insert(legendary.legion, {itemID = 137080, itemName = "Saruan's Resolve"})
-    table.insert(legendary.legion, {itemID = 151640, itemName = "Spirit of the Darkness Flame"})
-    table.insert(legendary.legion, {itemID = 151785, itemName = "Inner Hallation"})
-    table.insert(legendary.legion, {itemID = 132447, itemName = "Oblivion's Embrace"})
-    table.insert(legendary.legion, {itemID = 132451, itemName = "Muze's Unwavering Will"})
-    table.insert(legendary.legion, {itemID = 132461, itemName = "Skysec's Hold"})
-    table.insert(legendary.legion, {itemID = 137022, itemName = "Shadow Satyr's Walk"})
-    table.insert(legendary.legion, {itemID = 137029, itemName = "Jewel of the Lost Abbey"})
-    table.insert(legendary.legion, {itemID = 137030, itemName = "The Walls Fell"})
-    table.insert(legendary.legion, {itemID = 137035, itemName = "The Dark Titan's Advice"})
-    table.insert(legendary.legion, {itemID = 137046, itemName = "Al'Akir's Acrimony"})
-    table.insert(legendary.legion, {itemID = 137085, itemName = "The Emperor's Capacitor"})
-    table.insert(legendary.legion, {itemID = 137099, itemName = "X'oni's Caress"})
-    table.insert(legendary.legion, {itemID = 137276, itemName = "Reap and Sow"})
-    table.insert(legendary.legion, {itemID = 144293, itemName = "Oakheart's Puny Quods"})
-    table.insert(legendary.legion, {itemID = 132365, itemName = "Smoldering Heart"})
-    table.insert(legendary.legion, {itemID = 132864, itemName = "Alythess's Pyrogenics"})
-    table.insert(legendary.legion, {itemID = 137049, itemName = "Zevrim's Hunger"})
-    table.insert(legendary.legion, {itemID = 144247, itemName = "Praetorian's Tidecallers"})
-    table.insert(legendary.legion, {itemID = 144277, itemName = "Elize's Everlasting Encasement"})
-    table.insert(legendary.legion, {itemID = 144340, itemName = "Roar of the Seven Lions"})
-    table.insert(legendary.legion, {itemID = 144354, itemName = "Soul of the Deathlord"})
-    table.insert(legendary.legion, {itemID = 151810, itemName = "Fire in the Deep"})
-    table.insert(legendary.legion, {itemID = 133970, itemName = "Entrancing Trousers of An'juna"})
-    table.insert(legendary.legion, {itemID = 137040, itemName = "Mystic Kilt of the Rune Master"})
-    table.insert(legendary.legion, {itemID = 137070, itemName = "Xalan the Feared's Clench"})
-    table.insert(legendary.legion, {itemID = 137079, itemName = "Loramus Thalipedes' Sacrifice"})
-    table.insert(legendary.legion, {itemID = 151647, itemName = "Katsuo's Eclipse"})
-    table.insert(legendary.legion, {itemID = 132367, itemName = "Duskwalker's Footpads"})
-    table.insert(legendary.legion, {itemID = 132442, itemName = "The Deceiver's Blood Pact"})
-    table.insert(legendary.legion, {itemID = 137063, itemName = "Ilterendi, Crown Jewel of Silvermoon"})
-    table.insert(legendary.legion, {itemID = 137096, itemName = "Intact Nazjatar Molting"})
-    table.insert(legendary.legion, {itemID = 132369, itemName = "Greenskin's Waterlogged Wristcuffs"})
-    table.insert(legendary.legion, {itemID = 137016, itemName = "N'ero, Band of Promises"})
-    table.insert(legendary.legion, {itemID = 137227, itemName = "Consort's Cold Core"})
-    table.insert(legendary.legion, {itemID = 137227, itemName = "Consort's Cold Core"})
-    table.insert(legendary.legion, {itemID = 138117, itemName = "Shackles of Bryndaor"})
-    table.insert(legendary.legion, {itemID = 150936, itemName = "Mangaza's Madness"})
-    table.insert(legendary.legion, {itemID = 151643, itemName = "Insignia of Ravenholdt"})
-    table.insert(legendary.legion, {itemID = 151807, itemName = "Rammal's Ulterior Motive"})
-    table.insert(legendary.legion, {itemID = 137034, itemName = "Anvil-Hardened Wristwraps"})
-    table.insert(legendary.legion, {itemID = 137043, itemName = "Shelter of Rin"})
-    table.insert(legendary.legion, {itemID = 137071, itemName = "Fiery Red Maimers"})
-    table.insert(legendary.legion, {itemID = 137103, itemName = "Shattered Fragments of Sindragosa"})
-    table.insert(legendary.legion, {itemID = 144273, itemName = "Zann'esu Journey"})
-    table.insert(legendary.legion, {itemID = 138854, itemName = "Chatoyant Signet"})
-    table.insert(legendary.legion, {itemID = 132452, itemName = "Tyelca, Ferren Marcus's Stature"})
-    table.insert(legendary.legion, {itemID = 132444, itemName = "Gai Plin's Soothing Sash"})
-    table.insert(legendary.legion, {itemID = 151801, itemName = "Soul of the Farseer"})
-    table.insert(legendary.legion, {itemID = 151644, itemName = "Service of Gorefiend"})
-    table.insert(legendary.legion, {itemID = 132443, itemName = "Cord of Infinity"})
-    table.insert(legendary.legion, {itemID = 144258, itemName = "Fundamental Observation"})
-    table.insert(legendary.legion, {itemID = 144361, itemName = "Petrichor Lagniappe"})
-    table.insert(legendary.legion, {itemID = 144385, itemName = "Wilfred's Sigil of Superior Summoning"})
-    table.insert(legendary.legion, {itemID = 144303, itemName = "Sal'salabim's Lost Tunic"})
-    table.insert(legendary.legion, {itemID = 151821, itemName = "Qa'pla, Eredun War Order"})
-    table.insert(legendary.legion, {itemID = 132374, itemName = "Spiritual Journey"})
-    table.insert(legendary.legion, {itemID = 137038, itemName = "Soul of the Shadowblade"})
-    table.insert(legendary.legion, {itemID = 132375, itemName = "Soul of the Grandmaster"})
-    table.insert(legendary.legion, {itemID = 137033, itemName = "Unseen Predator's Cloak"})
-    table.insert(legendary.legion, {itemID = 151802, itemName = "Nesingwary's Trapping Treads"})
-    table.insert(legendary.legion, {itemID = 151800, itemName = "Frizzo's Fingertrap"})
-    table.insert(legendary.legion, {itemID = 137382, itemName = "Runemaster's Pauldrons"})
-    table.insert(legendary.legion, {itemID = 132410, itemName = "Storm Tempests"})
-    table.insert(legendary.legion, {itemID = 133977, itemName = "Maraad's Dying Breath"})
-    table.insert(legendary.legion, {itemID = 132379, itemName = "Fragment of the Betrayer's Prison"})
-    -- Runecrafted Legendary Items
-    table.insert(legendary.runecrafted, {itemID = 190464, itemName = "Cinch of Unity (Mage)"})
-    table.insert(legendary.runecrafted, {itemID = 190465, itemName = "Cinch of Unity (Druid)"})
-    table.insert(legendary.runecrafted, {itemID = 190466, itemName = "Cinch of Unity (Hunter)"})
-    table.insert(legendary.runecrafted, {itemID = 190467, itemName = "Cinch of Unity (Death Knight)"})
-    table.insert(legendary.runecrafted, {itemID = 190468, itemName = "Cinch of Unity (Priest)"})
-    table.insert(legendary.runecrafted, {itemID = 190469, itemName = "Cinch of Unity (Warlock)"})
-    table.insert(legendary.runecrafted, {itemID = 190470, itemName = "Cinch of Unity (Demon Hunter)"})
-    table.insert(legendary.runecrafted, {itemID = 190471, itemName = "Cinch of Unity (Rogue)"})
-    table.insert(legendary.runecrafted, {itemID = 190472, itemName = "Cinch of Unity (Monk)"})
-    table.insert(legendary.runecrafted, {itemID = 190473, itemName = "Cinch of Unity (Shaman)"})
-    table.insert(legendary.runecrafted, {itemID = 190474, itemName = "Cinch of Unity (Paladin)"})
-    table.insert(legendary.runecrafted, {itemID = 190475, itemName = "Cinch of Unity (Warrior)"})
-    -- Memories for Runecrafting
-    table.insert(legendary.memories, {itemID = 183243, itemName = "Memory of the Arbiter's Judgment"})
-    table.insert(legendary.memories, {itemID = 183284, itemName = "Memory of Escaping from Reality"})
-    table.insert(legendary.memories, {itemID = 183325, itemName = "Memory of Archbishop Benedictus"})
-    table.insert(legendary.memories, {itemID = 183244, itemName = "Memory of the Rattle of the Maw"})
-    table.insert(legendary.memories, {itemID = 183349, itemName = "Memory of the Deeptremor Stone"})
-    table.insert(legendary.memories, {itemID = 190590, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 183353, itemName = "Memory of the Windspeaker's Lava Resurgence"})
-    table.insert(legendary.memories, {itemID = 183264, itemName = "Memory of the Rylakstalker's Strikes"})
-    table.insert(legendary.memories, {itemID = 183305, itemName = "Memory of the Shock Barrier"})
-    table.insert(legendary.memories, {itemID = 183223, itemName = "Memory of the Circle of Life and Death"})
-    table.insert(legendary.memories, {itemID = 183375, itemName = "Memory of the Diabolic Raiment"})
-    table.insert(legendary.memories, {itemID = 183226, itemName = "Memory of the Balance of All Things"})
-    table.insert(legendary.memories, {itemID = 190584, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 183263, itemName = "Memory of Poisonous Injectors"})
-    table.insert(legendary.memories, {itemID = 183342, itemName = "Memory of Akaari's Soul Fragment"})
-    table.insert(legendary.memories, {itemID = 182636, itemName = "Memory of the Deadliest Coil"})
-    table.insert(legendary.memories, {itemID = 183253, itemName = "Memory of the Soulforge Embers"})
-    table.insert(legendary.memories, {itemID = 183293, itemName = "Memory of the Morning's Tear"})
-    table.insert(legendary.memories, {itemID = 183330, itemName = "Memory of Bloodfang's Essence"})
-    table.insert(legendary.memories, {itemID = 183393, itemName = "Memory of an Unbreakable Will"})
-    table.insert(legendary.memories, {itemID = 187231, itemName = "Memory of the Fragments of the Elder Antlers"})
-    table.insert(legendary.memories, {itemID = 183239, itemName = "Memory of an Unending Growth"})
-    table.insert(legendary.memories, {itemID = 183380, itemName = "Memory of a Seismic Reverberation"})
-    table.insert(legendary.memories, {itemID = 186687, itemName = "Memory of Celestial Spirits"})
-    table.insert(legendary.memories, {itemID = 183221, itemName = "Memory of the Dark Flame Spirit"})
-    table.insert(legendary.memories, {itemID = 183249, itemName = "Memory of a Vital Sacrifice"})
-    table.insert(legendary.memories, {itemID = 183296, itemName = "Memory of the Last Emperor"})
-    table.insert(legendary.memories, {itemID = 183339, itemName = "Memory of a Concealed Blunderbuss"})
-    table.insert(legendary.memories, {itemID = 183356, itemName = "Memory of the Primal Lava Actuators"})
-    table.insert(legendary.memories, {itemID = 183364, itemName = "Memory of Sacrolash's Dark Strike"})
-    table.insert(legendary.memories, {itemID = 186712, itemName = "Memory of the Deathspike"})
-    table.insert(legendary.memories, {itemID = 187223, itemName = "Memory of the Seeds of Rampant Growth"})
-    table.insert(legendary.memories, {itemID = 182638, itemName = "Memory of a Frenzied Monstrosity"})
-    table.insert(legendary.memories, {itemID = 183262, itemName = "Memory of the Butcher's Bone Fragments"})
-    table.insert(legendary.memories, {itemID = 183390, itemName = "Memory of a Reprisal"})
-    table.insert(legendary.memories, {itemID = 183242, itemName = "Memory of Eonar"})
-    table.insert(legendary.memories, {itemID = 183302, itemName = "Memory of the Sunwell's Bloom"})
-    table.insert(legendary.memories, {itemID = 183316, itemName = "Memory of the Twins of the Sun Priestess"})
-    table.insert(legendary.memories, {itemID = 183331, itemName = "Memory of Invigorating Shadowdust"})
-    table.insert(legendary.memories, {itemID = 186568, itemName = "Memory of an Abomination's Frenzy"})
-    table.insert(legendary.memories, {itemID = 182634, itemName = "Memory of a Frozen Champion's Rage"})
-    table.insert(legendary.memories, {itemID = 183285, itemName = "Memory of the Swiftsure Wraps"})
-    table.insert(legendary.memories, {itemID = 183306, itemName = "Memory of the Righteous Bulwark"})
-    table.insert(legendary.memories, {itemID = 183346, itemName = "Memory of an Ancestral Reminder"})
-    table.insert(legendary.memories, {itemID = 183357, itemName = "Memory of the Witch Doctor"})
-    table.insert(legendary.memories, {itemID = 183360, itemName = "Memory of the Primal Tide Core"})
-    table.insert(legendary.memories, {itemID = 182630, itemName = "Memory of Gorefiend's Domination"})
-    table.insert(legendary.memories, {itemID = 183236, itemName = "Memory of Ursoc"})
-    table.insert(legendary.memories, {itemID = 183240, itemName = "Memory of the Mother Tree"})
-    table.insert(legendary.memories, {itemID = 183248, itemName = "Memory of Jailer's Eye"})
-    table.insert(legendary.memories, {itemID = 183328, itemName = "Memory of Talbadar"})
-    table.insert(legendary.memories, {itemID = 186570, itemName = "Memory of Glory"})
-    table.insert(legendary.memories, {itemID = 190596, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 183215, itemName = "Memory of an Erratic Fel Core"})
-    table.insert(legendary.memories, {itemID = 183218, itemName = "Memory of a Fortified Fel Flame"})
-    table.insert(legendary.memories, {itemID = 183241, itemName = "Memory of the Dark Titan"})
-    table.insert(legendary.memories, {itemID = 183280, itemName = "Memory of Fragments of Ice"})
-    table.insert(legendary.memories, {itemID = 183310, itemName = "Memory of the Vanguard's Momentum"})
-    table.insert(legendary.memories, {itemID = 183369, itemName = "Memory of Wilfred's Sigil of Superior Summoning"})
-    table.insert(legendary.memories, {itemID = 186591, itemName = "Memory of the Harmonic Echo"})
-    table.insert(legendary.memories, {itemID = 187127, itemName = "Memory of Radiant Embers"})
-    table.insert(legendary.memories, {itemID = 183267, itemName = "Memory of an Expanded Potential"})
-    table.insert(legendary.memories, {itemID = 183299, itemName = "Memory of the Sun's Cycles"})
-    table.insert(legendary.memories, {itemID = 183320, itemName = "Memory of the Kiss of Death"})
-    table.insert(legendary.memories, {itemID = 183340, itemName = "Memory of Greenskin"})
-    table.insert(legendary.memories, {itemID = 183362, itemName = "Memory of a Malefic Wrath"})
-    table.insert(legendary.memories, {itemID = 182617, itemName = "Memory of Death's Embrace"})
-    table.insert(legendary.memories, {itemID = 182632, itemName = "Memory of Absolute Zero"})
-    table.insert(legendary.memories, {itemID = 183237, itemName = "Memory of the Sleeper"})
-    table.insert(legendary.memories, {itemID = 183291, itemName = "Memory of Yu'lon"})
-    table.insert(legendary.memories, {itemID = 183313, itemName = "Memory of the Lightbringer's Tempest"})
-    table.insert(legendary.memories, {itemID = 183359, itemName = "Memory of Jonat"})
-    table.insert(legendary.memories, {itemID = 183383, itemName = "Memory of an Enduring Blow"})
-    table.insert(legendary.memories, {itemID = 183389, itemName = "Memory of the Berserker's Will"})
-    table.insert(legendary.memories, {itemID = 186565, itemName = "Memory of Rampant Transference"})
-    table.insert(legendary.memories, {itemID = 190587, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 190589, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 182627, itemName = "Memory of Superstrain"})
-    table.insert(legendary.memories, {itemID = 183229, itemName = "Memory of a Timeworn Dreambinder"})
-    table.insert(legendary.memories, {itemID = 183270, itemName = "Memory of an Arcane Bombardment"})
-    table.insert(legendary.memories, {itemID = 183281, itemName = "Memory of Slick Ice"})
-    table.insert(legendary.memories, {itemID = 183283, itemName = "Memory of the Invoker"})
-    table.insert(legendary.memories, {itemID = 183289, itemName = "Memory of Stormstout"})
-    table.insert(legendary.memories, {itemID = 183312, itemName = "Memory of a Relentless Inquisitor"})
-    table.insert(legendary.memories, {itemID = 183318, itemName = "Memory of a Clear Mind"})
-    table.insert(legendary.memories, {itemID = 183334, itemName = "Memory of the Dashing Scoundrel"})
-    table.insert(legendary.memories, {itemID = 183344, itemName = "Memory of Finality"})
-    table.insert(legendary.memories, {itemID = 183347, itemName = "Memory of Devastating Chains"})
-    table.insert(legendary.memories, {itemID = 183348, itemName = "Memory of Deeply Rooted Elements"})
-    table.insert(legendary.memories, {itemID = 183352, itemName = "Memory of the Demise of Skybreaker"})
-    table.insert(legendary.memories, {itemID = 183358, itemName = "Memory of an Earthen Harmony"})
-    table.insert(legendary.memories, {itemID = 183372, itemName = "Memory of the Grim Inquisitor"})
-    table.insert(legendary.memories, {itemID = 183376, itemName = "Memory of Azj'Aqir's Madness"})
-    table.insert(legendary.memories, {itemID = 183382, itemName = "Memory of a Battlelord"})
-    table.insert(legendary.memories, {itemID = 187280, itemName = "Memory of the Fae Heart"})
-    table.insert(legendary.memories, {itemID = 190588, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 182629, itemName = "Memory of the Crimson Runes"})
-    table.insert(legendary.memories, {itemID = 183216, itemName = "Memory of a Burning Wound"})
-    table.insert(legendary.memories, {itemID = 183220, itemName = "Memory of Razelikh's Defilement"})
-    table.insert(legendary.memories, {itemID = 183238, itemName = "Memory of the Verdant Infusion"})
-    table.insert(legendary.memories, {itemID = 183245, itemName = "Memory of Norgannon"})
-    table.insert(legendary.memories, {itemID = 183258, itemName = "Memory of Eagletalon's True Focus"})
-    table.insert(legendary.memories, {itemID = 183259, itemName = "Memory of the Unblinking Vigil"})
-    table.insert(legendary.memories, {itemID = 183261, itemName = "Memory of Surging Shots"})
-    table.insert(legendary.memories, {itemID = 183275, itemName = "Memory of the Firestorm"})
-    table.insert(legendary.memories, {itemID = 183277, itemName = "Memory of the Sun King"})
-    table.insert(legendary.memories, {itemID = 183278, itemName = "Memory of the Cold Front"})
-    table.insert(legendary.memories, {itemID = 183287, itemName = "Memory of Charred Passions"})
-    table.insert(legendary.memories, {itemID = 183300, itemName = "Memory of the Magistrate's Judgment"})
-    table.insert(legendary.memories, {itemID = 183315, itemName = "Memory of Measured Contemplation"})
-    table.insert(legendary.memories, {itemID = 183370, itemName = "Memory of the Core of the Balespider"})
-    table.insert(legendary.memories, {itemID = 183384, itemName = "Memory of the Exploiter"})
-    table.insert(legendary.memories, {itemID = 186566, itemName = "Memory of the Final Sentence"})
-    table.insert(legendary.memories, {itemID = 186609, itemName = "Memory of Sinful Indulgence"})
-    table.insert(legendary.memories, {itemID = 186621, itemName = "Memory of Death's Fathom"})
-    table.insert(legendary.memories, {itemID = 187217, itemName = "Memory of the Bountiful Brew"})
-    table.insert(legendary.memories, {itemID = 187226, itemName = "Memory of the Shards of Annihilation"})
-    table.insert(legendary.memories, {itemID = 190595, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 183222, itemName = "Memory of the Elder Druid"})
-    table.insert(legendary.memories, {itemID = 183246, itemName = "Memory of Sephuz"})
-    table.insert(legendary.memories, {itemID = 183309, itemName = "Memory of the Ardent Protector"})
-    table.insert(legendary.memories, {itemID = 183324, itemName = "Memory of a Harmonious Apparatus"})
-    table.insert(legendary.memories, {itemID = 183367, itemName = "Memory of Demonic Synergy"})
-    table.insert(legendary.memories, {itemID = 183378, itemName = "Memory of the Leaper"})
-    table.insert(legendary.memories, {itemID = 187118, itemName = "Memory of the Demonic Oath"})
-    table.insert(legendary.memories, {itemID = 187163, itemName = "Memory of the Spheres' Harmony"})
-    table.insert(legendary.memories, {itemID = 187228, itemName = "Memory of the Contained Perpetual Explosion"})
-    table.insert(legendary.memories, {itemID = 187229, itemName = "Memory of the Pact of the Soulstalkers"})
-    table.insert(legendary.memories, {itemID = 187258, itemName = "Memory of the Faeline Harmony"})
-    table.insert(legendary.memories, {itemID = 187259, itemName = "Memory of the Raging Vesper Vortex"})
-    table.insert(legendary.memories, {itemID = 182640, itemName = "Memory of a Reanimated Shambler"})
-    table.insert(legendary.memories, {itemID = 183214, itemName = "Memory of the Chaos Theory"})
-    table.insert(legendary.memories, {itemID = 183225, itemName = "Memory of Lycara"})
-    table.insert(legendary.memories, {itemID = 183227, itemName = "Memory of Oneth"})
-    table.insert(legendary.memories, {itemID = 183232, itemName = "Memory of a Symmetrical Eye"})
-    table.insert(legendary.memories, {itemID = 183235, itemName = "Memory of the Natural Order"})
-    table.insert(legendary.memories, {itemID = 183256, itemName = "Memory of the Eredun War Order"})
-    table.insert(legendary.memories, {itemID = 183273, itemName = "Memory of a Temporal Warp"})
-    table.insert(legendary.memories, {itemID = 183286, itemName = "Memory of Shaohao"})
-    table.insert(legendary.memories, {itemID = 183288, itemName = "Memory of a Celestial Infusion"})
-    table.insert(legendary.memories, {itemID = 183298, itemName = "Memory of the Mad Paragon"})
-    table.insert(legendary.memories, {itemID = 183304, itemName = "Memory of the Shadowbreaker"})
-    table.insert(legendary.memories, {itemID = 183308, itemName = "Memory of the Endless Kings"})
-    table.insert(legendary.memories, {itemID = 183311, itemName = "Memory of the Final Verdict"})
-    table.insert(legendary.memories, {itemID = 183322, itemName = "Memory of a Divine Image"})
-    table.insert(legendary.memories, {itemID = 183329, itemName = "Memory of a Prism of Shadow and Fire"})
-    table.insert(legendary.memories, {itemID = 183333, itemName = "Memory of Tiny Toxic Blade"})
-    table.insert(legendary.memories, {itemID = 183343, itemName = "Memory of the Deathly Shadows"})
-    table.insert(legendary.memories, {itemID = 183373, itemName = "Memory of an Implosive Potential"})
-    table.insert(legendary.memories, {itemID = 183374, itemName = "Memory of Azj'Aqir's Cinders"})
-    table.insert(legendary.memories, {itemID = 183388, itemName = "Memory of a Reckless Defense"})
-    table.insert(legendary.memories, {itemID = 183391, itemName = "Memory of the Wall"})
-    table.insert(legendary.memories, {itemID = 186567, itemName = "Memory of Insatiable Hunger"})
-    table.insert(legendary.memories, {itemID = 186676, itemName = "Memory of the Toxic Onslaught"})
-    table.insert(legendary.memories, {itemID = 186710, itemName = "Memory of the Obedient"})
-    table.insert(legendary.memories, {itemID = 187105, itemName = "Memory of the Agonizing Gaze"})
-    table.insert(legendary.memories, {itemID = 187107, itemName = "Memory of the Duty-Bound Gavel"})
-    table.insert(legendary.memories, {itemID = 187161, itemName = "Memory of Bwonsamdi's Pact"})
-    table.insert(legendary.memories, {itemID = 187232, itemName = "Memory of the Pouch of Razor Fragments"})
-    table.insert(legendary.memories, {itemID = 187277, itemName = "Memory of Sinister Teachings"})
-    table.insert(legendary.memories, {itemID = 190593, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 190598, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 182625, itemName = "Memory of an Everlasting Grip"})
-    table.insert(legendary.memories, {itemID = 183211, itemName = "Memory of the Hour of Darkness"})
-    table.insert(legendary.memories, {itemID = 183212, itemName = "Memory of a Darkglare Medallion"})
-    table.insert(legendary.memories, {itemID = 183219, itemName = "Memory of Soul of Fire"})
-    table.insert(legendary.memories, {itemID = 183224, itemName = "Memory of a Deep Focus Draught"})
-    table.insert(legendary.memories, {itemID = 183252, itemName = "Memory of a Trapping Apparatus"})
-    table.insert(legendary.memories, {itemID = 183254, itemName = "Memory of a Dire Command"})
-    table.insert(legendary.memories, {itemID = 183279, itemName = "Memory of the Freezing Winds"})
-    table.insert(legendary.memories, {itemID = 183282, itemName = "Memory of the Fatal Touch"})
-    table.insert(legendary.memories, {itemID = 183292, itemName = "Memory of Clouded Focus"})
-    table.insert(legendary.memories, {itemID = 183294, itemName = "Memory of the Jade Ignition"})
-    table.insert(legendary.memories, {itemID = 183321, itemName = "Memory of the Penitent One"})
-    table.insert(legendary.memories, {itemID = 183332, itemName = "Memory of the Master Assassin's Mark"})
-    table.insert(legendary.memories, {itemID = 183335, itemName = "Memory of the Doomblade"})
-    table.insert(legendary.memories, {itemID = 183341, itemName = "Memory of a Guile Charm"})
-    table.insert(legendary.memories, {itemID = 183351, itemName = "Memory of an Elemental Equilibrium"})
-    table.insert(legendary.memories, {itemID = 183355, itemName = "Memory of the Frost Witch"})
-    table.insert(legendary.memories, {itemID = 183361, itemName = "Memory of the Spiritwalker's Tidal Totem"})
-    table.insert(legendary.memories, {itemID = 183365, itemName = "Memory of the Consuming Wrath"})
-    table.insert(legendary.memories, {itemID = 183368, itemName = "Memory of the Dark Portal"})
-    table.insert(legendary.memories, {itemID = 187511, itemName = "Memory of Elysian Might"})
-    table.insert(legendary.memories, {itemID = 182628, itemName = "Memory of Bryndaor"})
-    table.insert(legendary.memories, {itemID = 182635, itemName = "Memory of Koltira"})
-    table.insert(legendary.memories, {itemID = 183217, itemName = "Memory of my Darker Nature"})
-    table.insert(legendary.memories, {itemID = 183233, itemName = "Memory of the Frenzyband"})
-    table.insert(legendary.memories, {itemID = 183234, itemName = "Memory of a Luffa-Infused Embrace"})
-    table.insert(legendary.memories, {itemID = 183251, itemName = "Memory of a Craven Strategem"})
-    table.insert(legendary.memories, {itemID = 183255, itemName = "Memory of the Flamewaker"})
-    table.insert(legendary.memories, {itemID = 183265, itemName = "Memory of a Wildfire Cluster"})
-    table.insert(legendary.memories, {itemID = 183268, itemName = "Memory of a Grisly Icicle"})
-    table.insert(legendary.memories, {itemID = 183272, itemName = "Memory of a Siphoning Storm"})
-    table.insert(legendary.memories, {itemID = 183274, itemName = "Memory of a Fevered Incantation"})
-    table.insert(legendary.memories, {itemID = 183276, itemName = "Memory of the Molten Sky"})
-    table.insert(legendary.memories, {itemID = 183295, itemName = "Memory of Keefer"})
-    table.insert(legendary.memories, {itemID = 183301, itemName = "Memory of Uther"})
-    table.insert(legendary.memories, {itemID = 183319, itemName = "Memory of my Crystalline Reflection"})
-    table.insert(legendary.memories, {itemID = 183326, itemName = "Memory of the Void's Eternal Call"})
-    table.insert(legendary.memories, {itemID = 183377, itemName = "Memory of the Ymirjar"})
-    table.insert(legendary.memories, {itemID = 186572, itemName = "Memory of the Sinful Surge"})
-    table.insert(legendary.memories, {itemID = 186689, itemName = "Memory of the Splintered Elements"})
-    table.insert(legendary.memories, {itemID = 187111, itemName = "Memory of Blind Faith"})
-    table.insert(legendary.memories, {itemID = 187132, itemName = "Memory of the Seasons of Plenty"})
-    table.insert(legendary.memories, {itemID = 187162, itemName = "Memory of Shadow Word: Manipulation"})
-    table.insert(legendary.memories, {itemID = 187224, itemName = "Memory of the Elemental Conduit"})
-    table.insert(legendary.memories, {itemID = 187225, itemName = "Memory of the Languishing Soul Detritus"})
-    table.insert(legendary.memories, {itemID = 190591, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 190592, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 191635, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 191641, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 182626, itemName = "Memory of the Phearomones"})
-    table.insert(legendary.memories, {itemID = 182633, itemName = "Memory of the Biting Cold"})
-    table.insert(legendary.memories, {itemID = 182637, itemName = "Memory of Death's Certainty"})
-    table.insert(legendary.memories, {itemID = 183213, itemName = "Memory of the Anguish of the Collective"})
-    table.insert(legendary.memories, {itemID = 183228, itemName = "Memory of Arcane Pulsars"})
-    table.insert(legendary.memories, {itemID = 183230, itemName = "Memory of the Apex Predator"})
-    table.insert(legendary.memories, {itemID = 183231, itemName = "Memory of a Cat-Eye Curio"})
-    table.insert(legendary.memories, {itemID = 183250, itemName = "Memory of the Wild Call"})
-    table.insert(legendary.memories, {itemID = 183260, itemName = "Memory of the Serpentstalker's Trickery"})
-    table.insert(legendary.memories, {itemID = 183269, itemName = "Memory of the Triune Ward"})
-    table.insert(legendary.memories, {itemID = 183314, itemName = "Memory of Cauterizing Shadows"})
-    table.insert(legendary.memories, {itemID = 183317, itemName = "Memory of a Heavenly Vault"})
-    table.insert(legendary.memories, {itemID = 183337, itemName = "Memory of the Zoldyck Insignia"})
-    table.insert(legendary.memories, {itemID = 183345, itemName = "Memory of the Rotten"})
-    table.insert(legendary.memories, {itemID = 183363, itemName = "Memory of Azj'Aqir's Agony"})
-    table.insert(legendary.memories, {itemID = 183366, itemName = "Memory of the Claw of Endereth"})
-    table.insert(legendary.memories, {itemID = 183381, itemName = "Memory of the Tormented Kings"})
-    table.insert(legendary.memories, {itemID = 183387, itemName = "Memory of the Deathmaker"})
-    table.insert(legendary.memories, {itemID = 186577, itemName = "Memory of the Unbridled Swarm"})
-    table.insert(legendary.memories, {itemID = 186673, itemName = "Memory of Kindred Affinity"})
-    table.insert(legendary.memories, {itemID = 191645, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 183257, itemName = "Memory of the Rylakstalker's Fangs"})
-    table.insert(legendary.memories, {itemID = 183266, itemName = "Memory of the Disciplinary Command"})
-    table.insert(legendary.memories, {itemID = 183297, itemName = "Memory of Xuen"})
-    table.insert(legendary.memories, {itemID = 183303, itemName = "Memory of Maraad's Dying Breath"})
-    table.insert(legendary.memories, {itemID = 183336, itemName = "Memory of the Duskwalker's Patch"})
-    table.insert(legendary.memories, {itemID = 186576, itemName = "Memory of Nature's Fury"})
-    table.insert(legendary.memories, {itemID = 186775, itemName = "Memory of Resounding Clarity"})
-    table.insert(legendary.memories, {itemID = 187109, itemName = "Memory of a Blazing Slaughter"})
-    table.insert(legendary.memories, {itemID = 187160, itemName = "Memory of Pallid Command"})
-    table.insert(legendary.memories, {itemID = 187227, itemName = "Memory of the Decaying Soul Satchel"})
-    table.insert(legendary.memories, {itemID = 187230, itemName = "Memory of the Bag of Munitions"})
-    table.insert(legendary.memories, {itemID = 187237, itemName = "Memory of a Call to Arms"})
-    table.insert(legendary.memories, {itemID = 190594, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 191637, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 191638, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 182631, itemName = "Memory of a Vampiric Aura"})
-    table.insert(legendary.memories, {itemID = 183210, itemName = "Memory of a Fel Bombardment"})
-    table.insert(legendary.memories, {itemID = 183247, itemName = "Memory of a Stable Phantasma Lure"})
-    table.insert(legendary.memories, {itemID = 183271, itemName = "Memory of the Infinite Arcane"})
-    table.insert(legendary.memories, {itemID = 183290, itemName = "Memory of Ancient Teachings"})
-    table.insert(legendary.memories, {itemID = 183323, itemName = "Memory of Flash Concentration"})
-    table.insert(legendary.memories, {itemID = 183350, itemName = "Memory of the Great Sundering"})
-    table.insert(legendary.memories, {itemID = 183354, itemName = "Memory of the Doom Winds"})
-    table.insert(legendary.memories, {itemID = 183371, itemName = "Memory of the Horned Nightmare"})
-    table.insert(legendary.memories, {itemID = 183379, itemName = "Memory of the Misshapen Mirror"})
-    table.insert(legendary.memories, {itemID = 183386, itemName = "Memory of Fujieda"})
-    table.insert(legendary.memories, {itemID = 183392, itemName = "Memory of the Thunderlord"})
-    table.insert(legendary.memories, {itemID = 191640, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 183307, itemName = "Memory of a Holy Sigil"})
-    table.insert(legendary.memories, {itemID = 183327, itemName = "Memory of the Painbreaker Psalm"})
-    table.insert(legendary.memories, {itemID = 183338, itemName = "Memory of Celerity"})
-    table.insert(legendary.memories, {itemID = 183385, itemName = "Memory of the Unhinged"})
-    table.insert(legendary.memories, {itemID = 186635, itemName = "Memory of Sinful Delight"})
-    table.insert(legendary.memories, {itemID = 187106, itemName = "Memory of Divine Resonance"})
-    table.insert(legendary.memories, {itemID = 191636, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 191639, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 191634, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 191642, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 191643, itemName = "Memory of Unity"})
-    table.insert(legendary.memories, {itemID = 191644, itemName = "Memory of Unity"})
-    -- Base Items for Runecrafting
-    table.insert(legendary.runecrafted, {itemID = 178927, itemName = "Shadowghast Necklace"})
-    table.insert(legendary.runecrafted, {itemID = 178926, itemName = "Shadowghast Ring"})
-    table.insert(legendary.runecrafted, {itemID = 171417, itemName = "Shadowghast Pauldrons"})
-    table.insert(legendary.runecrafted, {itemID = 171418, itemName = "Shadowghast Waistguard"})
-    table.insert(legendary.runecrafted, {itemID = 171412, itemName = "Shadowghast Breastplate"})
-    table.insert(legendary.runecrafted, {itemID = 171415, itemName = "Shadowghast Helm"})
-    table.insert(legendary.runecrafted, {itemID = 171413, itemName = "Shadowghast Sabatons"})
-    table.insert(legendary.runecrafted, {itemID = 171419, itemName = "Shadowghast Armguards"})
-    table.insert(legendary.runecrafted, {itemID = 171416, itemName = "Shadowghast Greaves"})
-    table.insert(legendary.runecrafted, {itemID = 171414, itemName = "Shadowghast Gauntlets"})
-    table.insert(legendary.runecrafted, {itemID = 173241, itemName = "Grim-Veiled Robe"})
-    table.insert(legendary.runecrafted, {itemID = 173245, itemName = "Grim-Veiled Hood"})
-    table.insert(legendary.runecrafted, {itemID = 173242, itemName = "Grim-Veiled Cape"})
-    table.insert(legendary.runecrafted, {itemID = 173248, itemName = "Grim-Veiled Belt"})
-    table.insert(legendary.runecrafted, {itemID = 173247, itemName = "Grim-Veiled Spaulders"})
-    table.insert(legendary.runecrafted, {itemID = 173243, itemName = "Grim-Veiled Sandals"})
-    table.insert(legendary.runecrafted, {itemID = 173244, itemName = "Grim-Veiled Mittens"})
-    table.insert(legendary.runecrafted, {itemID = 173249, itemName = "Grim-Veiled Bracers"})
-    table.insert(legendary.runecrafted, {itemID = 173246, itemName = "Grim-Veiled Pants"})
-    table.insert(legendary.runecrafted, {itemID = 172317, itemName = "Umbrahide Helm"})
-    table.insert(legendary.runecrafted, {itemID = 172321, itemName = "Umbrahide Armguards"})
-    table.insert(legendary.runecrafted, {itemID = 172319, itemName = "Umbrahide Pauldrons"})
-    table.insert(legendary.runecrafted, {itemID = 172314, itemName = "Umbrahide Vest"})
-    table.insert(legendary.runecrafted, {itemID = 172315, itemName = "Umbrahide Treads"})
-    table.insert(legendary.runecrafted, {itemID = 172316, itemName = "Umbrahide Gauntlets"})
-    table.insert(legendary.runecrafted, {itemID = 172318, itemName = "Umbrahide Leggings"})
-    table.insert(legendary.runecrafted, {itemID = 172320, itemName = "Umbrahide Waistguard"})
-    table.insert(legendary.runecrafted, {itemID = 172322, itemName = "Boneshatter Vest"})
-    table.insert(legendary.runecrafted, {itemID = 172327, itemName = "Boneshatter Pauldrons"})
-    table.insert(legendary.runecrafted, {itemID = 172326, itemName = "Boneshatter Greaves"})
-    table.insert(legendary.runecrafted, {itemID = 172325, itemName = "Boneshatter Helm"})
-    table.insert(legendary.runecrafted, {itemID = 172323, itemName = "Boneshatter Treads"})
-    table.insert(legendary.runecrafted, {itemID = 172329, itemName = "Boneshatter Armguards"})
-    table.insert(legendary.runecrafted, {itemID = 172328, itemName = "Boneshatter Waistguard"})
-    table.insert(legendary.runecrafted, {itemID = 172324, itemName = "Boneshatter Gauntlets"})
 end
 
 -- On plugin load, wipe the categories we've added, then repopulate them.
@@ -830,6 +827,5 @@ function CraftingLegendaries:OnInitialize()
     print("We crafting some legendaries? I hope so.")
     --@end-debug@
     self:KillOldCategories()
-    self:AddItemsToTables()
     self:AddTablesToCategories()
 end
