@@ -405,7 +405,6 @@ local legendary = {
         132369, -- Greenskin's Waterlogged Wristcuffs
         137016, -- N'ero, Band of Promises
         137227, -- Consort's Cold Core
-        137227, -- Consort's Cold Core
         138117, -- Shackles of Bryndaor
         150936, -- Mangaza's Madness
         151643, -- Insignia of Ravenholdt
