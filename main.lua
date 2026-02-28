@@ -792,12 +792,12 @@ function CraftingLegendaries:WrapLegendaryCategoryText(category)
 end
 
 function CraftingLegendaries:KillOldCategories()
-    for _, category in pairs(legendaryCategories) do
+    for key, category in pairs(legendaryCategories) do
         categories:WipeCategory(category)
         categories:WipeCategory(L:G(category))
-        categories:WipeCategory(self:GetCategoryName(category))
+        categories:WipeCategory(self:GetCategoryName(key))
         --@debug@
-        print("Category \"" .. self:GetCategoryName(category) .. "\" deleted.")
+        print("Category \"" .. self:GetCategoryName(key) .. "\" deleted.")
         --@end-debug@
     end
 end
